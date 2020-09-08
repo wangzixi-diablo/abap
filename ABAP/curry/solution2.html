@@ -1,0 +1,13 @@
+<html>
+<script>
+const curry = (fn , ...args) => { return fn.bind(null, ...args); }
+
+var jerryOriginalPrint = function(...arg){
+	console.log("Jerry can program with: " + arg);
+}
+
+var curriedPrint = curry( jerryOriginalPrint, "ABAP");
+
+curriedPrint("Java", "JavaScript", "Scala", "C++");
+</script>
+</html>

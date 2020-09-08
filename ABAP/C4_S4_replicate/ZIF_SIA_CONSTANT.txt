@@ -1,0 +1,17 @@
+INTERFACE zif_sia_constant
+  PUBLIC .
+
+
+  CONSTANTS: BEGIN OF cs_role_category_code,
+               buyer   TYPE int4 VALUE 1,
+               bill_to TYPE int4 VALUE 10,
+             END OF cs_role_category_code,
+
+             BEGIN OF cs_role_code,
+               account              TYPE int4 VALUE 1001,
+               employee_responsible TYPE int4 VALUE 39,
+               ship_to              TYPE int4 VALUE 1005,
+               payer                TYPE int4 VALUE 8,
+               bill_to              TYPE int4 VALUE 10,
+             END OF cs_role_code.
+ENDINTERFACE.

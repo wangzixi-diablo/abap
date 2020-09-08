@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xfa generator="AdobeLiveCycleDesignerES_V10.4.0.20160610.1.923074_SAP" APIVersion="3.6.16064.0"?>
+<xdp:xdp xmlns:xdp="http://ns.adobe.com/xdp/" timeStamp="2017-05-02T20:34:47Z" uuid="0a4972a5-4686-4e77-ac97-0e501b0e3c89">
+<template xmlns:xliff="urn:oasis:names:tc:xliff:document:1.1" xmlns="http://www.xfa.org/schema/xfa-template/3.0/">
+   <?formServer defaultPDFRenderFormat acrobat9.1dynamic?>
+   <?formServer allowRenderCaching 0?>
+   <?formServer formModel both?>
+   <subform layout="tb" locale="en_US" name="data" restoreState="auto">
+      <pageSet>
+         <pageArea id="Page1" name="Page1">
+            <contentArea h="10.5in" w="8in" x="0.25in" y="0.25in"/>
+            <medium long="11in" short="8.5in" stock="letter"/>
+            <?templateDesigner expand 1?></pageArea>
+         <?templateDesigner expand 1?></pageSet>
+      <subform layout="tb" name="bdyMain" w="8in">
+         <draw h="25.4mm" name="Image1" w="25.4mm">
+            <ui>
+               <imageEdit/>
+            </ui>
+            <value>
+               <image contentType="image/png" href="\\TSHomeServer\TSHome$\I042416\Desktop\1491180884x2890174226.png"/>
+            </value>
+         </draw>
+         <subform layout="tb" name="frmTable" w="203.2mm" y="25.4mm">
+            <bind match="none"/>
+            <field access="readOnly" h="9mm" name="ORDER_NUM" w="62mm">
+               <ui>
+                  <numericEdit>
+                     <border>
+                        <edge presence="hidden"/>
+                        <edge presence="hidden"/>
+                        <edge/>
+                        <edge presence="hidden"/>
+                     </border>
+                     <margin/>
+                  </numericEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <value>
+                  <integer/>
+               </value>
+               <caption reserve="40.64mm">
+                  <para vAlign="middle"/>
+                  <value>
+                     <text xliff:rid="D59C27D0-4955-48D8-AC96-1C0E6D18FB4A">Service Order Number:</text>
+                  </value>
+               </caption>
+               <bind match="dataRef" ref="$record.ORDERLIST.ORDER_NUM"/>
+               <validate nullTest="error">
+                  <script contentType="application/x-javascript">function testTotalDigits(maxDigits)
+
+{
+
+  var value = this.rawValue.toString();
+
+  var numDigits = 0;
+
+  for (i = 0; i &lt; value.length; i++)
+
+  {
+
+    if (value.charAt(i) &gt;= '0' &amp;&amp; value.charAt(i) &lt;= '9')
+
+      numDigits++;
+
+  }
+
+  return (numDigits &lt;= maxDigits);
+
+}
+
+this.isNull || (this.rawValue &gt;= -2147483648 &amp;&amp; this.rawValue &lt;= 2147483647 &amp;&amp; testTotalDigits(10));
+
+</script>
+               </validate>
+               <?digestForSAP digest="8241460cee4326ab7c3f155d0d954f73"?></field>
+            <subform columnWidths="30mm 76.2mm 30mm 50.8mm" layout="table" name="Table1">
+               <border>
+                  <edge/>
+               </border>
+               <subform id="HeaderRow_ID" layout="row" name="HeaderRow">
+                  <assist role="TH"/>
+                  <draw h="10mm" name="Cell1">
+                     <border>
+                        <edge/>
+                        <corner thickness="0.1778mm"/>
+                        <fill>
+                           <color value="192,192,192"/>
+                        </fill>
+                     </border>
+                     <ui>
+                        <textEdit/>
+                     </ui>
+                     <value>
+                        <text xliff:rid="0A5A7AC1-49DF-4519-8F35-B3F925991B30">Service Order ID	</text>
+                     </value>
+                     <font typeface="Arial"/>
+                     <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                     <para hAlign="center" vAlign="middle"/>
+                     <keep intact="none"/>
+                  </draw>
+                  <draw h="10mm" name="Cell2">
+                     <border>
+                        <edge/>
+                        <corner thickness="0.1778mm"/>
+                        <fill>
+                           <color value="192,192,192"/>
+                        </fill>
+                     </border>
+                     <ui>
+                        <textEdit/>
+                     </ui>
+                     <value>
+                        <text xliff:rid="ACC0EEED-CDF5-4F5A-8B2F-95A00576EC78">Description	</text>
+                     </value>
+                     <font typeface="Arial"/>
+                     <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                     <para hAlign="center" vAlign="middle"/>
+                     <keep intact="none"/>
+                  </draw>
+                  <draw h="10mm" name="Cell3">
+                     <border>
+                        <edge/>
+                        <corner thickness="0.1778mm"/>
+                        <fill>
+                           <color value="192,192,192"/>
+                        </fill>
+                     </border>
+                     <ui>
+                        <textEdit/>
+                     </ui>
+                     <value>
+                        <text xliff:rid="BCC331B8-A4BF-43C4-B91F-420D627F9058">Created By</text>
+                     </value>
+                     <font typeface="Arial"/>
+                     <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                     <para hAlign="center" vAlign="middle"/>
+                     <keep intact="none"/>
+                  </draw>
+                  <draw h="10mm" name="Cell4">
+                     <border>
+                        <edge/>
+                        <corner thickness="0.1778mm"/>
+                        <fill>
+                           <color value="192,192,192"/>
+                        </fill>
+                     </border>
+                     <ui>
+                        <textEdit/>
+                     </ui>
+                     <value>
+                        <text xliff:rid="C255577A-4357-4377-8E9F-7C60987AAADC">Posting Date</text>
+                     </value>
+                     <font typeface="Arial"/>
+                     <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                     <para hAlign="center" vAlign="middle"/>
+                     <keep intact="none"/>
+                  </draw>
+                  <border>
+                     <edge presence="hidden"/>
+                  </border>
+                  <bind match="none"/>
+                  <?templateDesigner expand 0?>
+                  <keep intact="none"/>
+                  <occur max="-1"/>
+               </subform>
+               <subform layout="row" name="Row1">
+                  <assist role="TR"/>
+                  <field access="readOnly" h="10mm" minW="25.4mm" name="OBJECT_ID">
+                     <ui>
+                        <textEdit/>
+                     </ui>
+                     <font size="9pt" typeface="Arial"/>
+                     <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                     <para hAlign="center" vAlign="middle"/>
+                     <border>
+                        <edge/>
+                        <corner thickness="0.1778mm"/>
+                     </border>
+                     <value>
+                        <text maxChars="10"/>
+                     </value>
+                     <bind match="dataRef" ref="$.OBJECT_ID"/>
+                     <desc>
+                        <text name="Schema Annotation">Process ID</text>
+                     </desc>
+                     <?digestForSAP digest="c280d0a323b8be17ed3ce4661061c7a8"?></field>
+                  <field access="readOnly" h="10mm" minW="25.4mm" name="DESCRIPTION">
+                     <ui>
+                        <textEdit/>
+                     </ui>
+                     <font size="9pt" typeface="Arial"/>
+                     <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                     <para hAlign="center" vAlign="middle"/>
+                     <border>
+                        <edge/>
+                        <corner thickness="0.1778mm"/>
+                     </border>
+                     <value>
+                        <text maxChars="40"/>
+                     </value>
+                     <bind match="dataRef" ref="$.DESCRIPTION"/>
+                     <desc>
+                        <text name="Schema Annotation">Transaction Description</text>
+                     </desc>
+                     <?digestForSAP digest="975b62c3f964fd58715fd1aecd7fe1d5"?></field>
+                  <field access="readOnly" h="10mm" name="CREATED_BY">
+                     <ui>
+                        <textEdit/>
+                     </ui>
+                     <font size="9pt" typeface="Arial"/>
+                     <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                     <para hAlign="center" vAlign="middle"/>
+                     <border>
+                        <edge/>
+                        <corner thickness="0.1778mm"/>
+                     </border>
+                     <bind match="dataRef" ref="$.CREATED_BY"/>
+                     <desc>
+                        <text name="Schema Annotation">User that Created the Transaction</text>
+                     </desc>
+                     <validate nullTest="error"/>
+                     <value>
+                        <text maxChars="12"/>
+                     </value>
+                     <?digestForSAP digest="fe482f559070e2c07c13615e74b50263"?></field>
+                  <field access="readOnly" h="10mm" name="POSTING_DATE">
+                     <ui>
+                        <dateTimeEdit/>
+                     </ui>
+                     <font size="9pt" typeface="Arial"/>
+                     <margin bottomInset="0.5mm" leftInset="0.5mm" rightInset="0.5mm" topInset="0.5mm"/>
+                     <para hAlign="center" vAlign="middle"/>
+                     <value>
+                        <date/>
+                     </value>
+                     <border>
+                        <edge/>
+                        <corner thickness="0.1778mm"/>
+                     </border>
+                     <desc>
+                        <text name="Schema Annotation">Posting Date for a Business Transaction</text>
+                     </desc>
+                     <validate nullTest="error"/>
+                     <bind match="dataRef" ref="$.POSTING_DATE">
+                        <picture>date{YYYY-MM-DD}</picture>
+                     </bind>
+                     <?digestForSAP digest="b83057a7d763f3c9167694e9953ff0f8"?></field>
+                  <border>
+                     <edge presence="hidden"/>
+                  </border>
+                  <bind match="dataRef" ref="$record.ORDERLIST.ORDER_LIST.DATA[*]"/>
+                  <occur max="-1"/>
+                  <keep intact="none" previous="contentArea"/>
+                  <?templateDesigner expand 1?></subform>
+               <bind match="none"/>
+               <?templateDesigner rowpattern first:1, next:1, firstcolor:f0f0f0, nextcolor:ffffff, apply:0?>
+               <overflow leader="HeaderRow"/>
+               <?templateDesigner expand 1?></subform>
+            <?templateDesigner expand 1?></subform>
+         <?templateDesigner expand 1?></subform>
+      <proto/>
+      <desc>
+         <text name="version">10.4.0.20160610.1.923074</text>
+      </desc>
+      <?templateDesigner Hyphenation excludeInitialCap:1, excludeAllCaps:1, wordCharCnt:7, remainCharCnt:3, pushCharCnt:3?>
+      <?templateDesigner expand 1?>
+      <?renderCache.subset "Arial" 0 0 ISO-8859-1 4 108 27 0003001D002500260027002C003100320033003600440045004600470048004A004C005000510052005300550056005700580059005C :BCDINOPSabcdegimnoprstuvy?></subform>
+   <?templateDesigner DefaultPreviewDynamic 1?>
+   <?templateDesigner Grid show:1, snap:1, units:0, color:ff8080, origin:(0,0), interval:(125000,125000)?>
+   <?templateDesigner WidowOrphanControl 0?>
+   <?originalXFAVersion http://www.xfa.org/schema/xfa-template/3.0/?>
+   <?templateDesigner DefaultLanguage JavaScript?>
+   <?templateDesigner DefaultRunAt client?>
+   <?acrobat JavaScript strictScoping?>
+   <?PDFPrintOptions embedViewerPrefs 0?>
+   <?PDFPrintOptions embedPrintOnFormOpen 0?>
+   <?PDFPrintOptions scalingPrefs 0?>
+   <?PDFPrintOptions enforceScalingPrefs 0?>
+   <?PDFPrintOptions paperSource 0?>
+   <?PDFPrintOptions duplexMode 0?>
+   <?templateDesigner DefaultPreviewType print?>
+   <?templateDesigner DefaultPreviewPagination duplex?>
+   <?templateDesigner XDPPreviewFormat 20?>
+   <?templateDesigner DefaultPreviewDataFileName \\TSHomeServer\TSHome$\I042416\Desktop\XFD.xml?>
+   <?templateDesigner DefaultCaptionFontSettings face:Arial;size:10;weight:normal;style:normal?>
+   <?templateDesigner DefaultValueFontSettings face:Arial;size:10;weight:normal;style:normal?>
+   <?templateDesigner SaveTaggedPDF 1?>
+   <?templateDesigner SavePDFWithEmbeddedFonts 1?>
+   <?templateDesigner FormTargetVersion 30?>
+   <?templateDesigner Rulers horizontal:1, vertical:1, guidelines:1, crosshairs:0?>
+   <?templateDesigner Zoom 139?></template>
+<config xmlns="http://www.xfa.org/schema/xci/3.0/">
+   <agent name="designer">
+      <!--  [0..n]  -->
+      <destination>pdf</destination>
+      <pdf>
+         <!--  [0..n]  -->
+         <fontInfo/>
+      </pdf>
+      <common>
+         <template>
+            <base>https://ldciqgs.wdf.sap.corp:44300/sap/bc/fp/form/layout/</base>
+         </template>
+      </common>
+   </agent>
+   <present>
+      <!--  [0..n]  -->
+      <pdf>
+         <!--  [0..n]  -->
+         <version>1.7</version>
+         <adobeExtensionLevel>5</adobeExtensionLevel>
+      </pdf>
+      <common>
+         <data>
+            <xsl>
+               <uri/>
+            </xsl>
+            <outputXSL>
+               <uri/>
+            </outputXSL>
+         </data>
+      </common>
+      <xdp>
+         <packets>*</packets>
+      </xdp>
+   </present>
+</config>
+<connectionSet xmlns="http://www.xfa.org/schema/xfa-connection-set/2.8/">
+   <xsdConnection dataDescription="data" name="PF_CRM_ORDER_LIST">
+      <uri/>
+      <rootElement>data</rootElement>
+   </xsdConnection>
+</connectionSet>
+<xfa:datasets xmlns:xfa="http://www.xfa.org/schema/xfa-data/1.0/">
+   <xfa:data xfa:dataNode="dataGroup"/>
+   <dd:dataDescription xmlns:dd="http://ns.adobe.com/data-description/" dd:name="data">
+      <data>
+         <ORDERLIST>
+            <ORDER_NUM/>
+            <ORDER_LIST dd:minOccur="0">
+               <DATA dd:maxOccur="-1">
+                  <CLIENT/>
+                  <GUID/>
+                  <OBJECT_ID/>
+                  <PROCESS_TYPE/>
+                  <POSTING_DATE/>
+                  <DESCRIPTION/>
+                  <DESCR_LANGUAGE/>
+                  <LOGICAL_SYSTEM/>
+                  <CRM_RELEASE/>
+                  <SCENARIO/>
+                  <TEMPLATE_TYPE/>
+                  <CREATED_AT/>
+                  <CREATED_BY/>
+                  <CHANGED_AT/>
+                  <CHANGED_BY/>
+                  <HEAD_CHANGED_AT/>
+                  <ORDERADM_H_DUMMY/>
+                  <INPUT_CHANNEL/>
+                  <BTX_CLASS/>
+                  <AUTH_SCOPE/>
+                  <COMP_TX_HEADER/>
+                  <OBJECT_TYPE/>
+                  <ARCHIVING_FLAG/>
+                  <DESCRIPTION_UC/>
+                  <OBJECT_ID_OK/>
+                  <VERIFY_DATE/>
+                  <CRM_CHANGED_AT/>
+                  <POSTPROCESS_AT/>
+                  <KNUMV/>
+                  <KAPPL/>
+                  <KALSM/>
+                  <DOCTYPE/>
+                  <KVEWE/>
+               </DATA>
+            </ORDER_LIST>
+         </ORDERLIST>
+      </data>
+   </dd:dataDescription>
+</xfa:datasets>
+<localeSet xmlns="http://www.xfa.org/schema/xfa-locale-set/2.7/">
+   <locale desc="English (United States)" name="en_US">
+      <calendarSymbols name="gregorian">
+         <monthNames>
+            <month>January</month>
+            <month>February</month>
+            <month>March</month>
+            <month>April</month>
+            <month>May</month>
+            <month>June</month>
+            <month>July</month>
+            <month>August</month>
+            <month>September</month>
+            <month>October</month>
+            <month>November</month>
+            <month>December</month>
+         </monthNames>
+         <monthNames abbr="1">
+            <month>Jan</month>
+            <month>Feb</month>
+            <month>Mar</month>
+            <month>Apr</month>
+            <month>May</month>
+            <month>Jun</month>
+            <month>Jul</month>
+            <month>Aug</month>
+            <month>Sep</month>
+            <month>Oct</month>
+            <month>Nov</month>
+            <month>Dec</month>
+         </monthNames>
+         <dayNames>
+            <day>Sunday</day>
+            <day>Monday</day>
+            <day>Tuesday</day>
+            <day>Wednesday</day>
+            <day>Thursday</day>
+            <day>Friday</day>
+            <day>Saturday</day>
+         </dayNames>
+         <dayNames abbr="1">
+            <day>Sun</day>
+            <day>Mon</day>
+            <day>Tue</day>
+            <day>Wed</day>
+            <day>Thu</day>
+            <day>Fri</day>
+            <day>Sat</day>
+         </dayNames>
+         <meridiemNames>
+            <meridiem>AM</meridiem>
+            <meridiem>PM</meridiem>
+         </meridiemNames>
+         <eraNames>
+            <era>BC</era>
+            <era>AD</era>
+         </eraNames>
+      </calendarSymbols>
+      <datePatterns>
+         <datePattern name="full">EEEE, MMMM D, YYYY</datePattern>
+         <datePattern name="long">MMMM D, YYYY</datePattern>
+         <datePattern name="med">MMM D, YYYY</datePattern>
+         <datePattern name="short">M/D/YY</datePattern>
+      </datePatterns>
+      <timePatterns>
+         <timePattern name="full">h:MM:SS A Z</timePattern>
+         <timePattern name="long">h:MM:SS A Z</timePattern>
+         <timePattern name="med">h:MM:SS A</timePattern>
+         <timePattern name="short">h:MM A</timePattern>
+      </timePatterns>
+      <dateTimeSymbols>GyMdkHmsSEDFwWahKzZ</dateTimeSymbols>
+      <numberPatterns>
+         <numberPattern name="numeric">z,zz9.zzz</numberPattern>
+         <numberPattern name="currency">$z,zz9.99|($z,zz9.99)</numberPattern>
+         <numberPattern name="percent">z,zz9%</numberPattern>
+      </numberPatterns>
+      <numberSymbols>
+         <numberSymbol name="decimal">.</numberSymbol>
+         <numberSymbol name="grouping">,</numberSymbol>
+         <numberSymbol name="percent">%</numberSymbol>
+         <numberSymbol name="minus">-</numberSymbol>
+         <numberSymbol name="zero">0</numberSymbol>
+      </numberSymbols>
+      <currencySymbols>
+         <currencySymbol name="symbol">$</currencySymbol>
+         <currencySymbol name="isoname">USD</currencySymbol>
+         <currencySymbol name="decimal">.</currencySymbol>
+      </currencySymbols>
+      <typefaces>
+         <typeface name="Myriad Pro"/>
+         <typeface name="Minion Pro"/>
+         <typeface name="Courier Std"/>
+         <typeface name="Adobe Pi Std"/>
+         <typeface name="Adobe Hebrew"/>
+         <typeface name="Adobe Arabic"/>
+         <typeface name="Adobe Thai"/>
+         <typeface name="Kozuka Gothic Pro-VI M"/>
+         <typeface name="Kozuka Mincho Pro-VI R"/>
+         <typeface name="Adobe Ming Std L"/>
+         <typeface name="Adobe Song Std L"/>
+         <typeface name="Adobe Myungjo Std M"/>
+      </typefaces>
+   </locale>
+</localeSet>
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.2-c001 63.139439, 2011/06/07-10:39:26        ">
+   <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <rdf:Description xmlns:xmp="http://ns.adobe.com/xap/1.0/" rdf:about="">
+         <xmp:MetadataDate>2017-05-02T20:34:47Z</xmp:MetadataDate>
+         <xmp:CreatorTool>Adobe LiveCycle Designer ES 10.4</xmp:CreatorTool>
+      </rdf:Description>
+      <rdf:Description xmlns:pdf="http://ns.adobe.com/pdf/1.3/" rdf:about="">
+         <pdf:Producer>Adobe LiveCycle Designer ES 10.4</pdf:Producer>
+      </rdf:Description>
+      <rdf:Description xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/" rdf:about="">
+         <xmpMM:DocumentID>uuid:0a4972a5-4686-4e77-ac97-0e501b0e3c89</xmpMM:DocumentID>
+      </rdf:Description>
+      <rdf:Description xmlns:desc="http://ns.adobe.com/xfa/promoted-desc/" rdf:about="">
+         <desc:version rdf:parseType="Resource">
+            <rdf:value>10.4.0.20160610.1.923074</rdf:value>
+            <desc:ref>/template/subform[1]</desc:ref>
+         </desc:version>
+      </rdf:Description>
+   </rdf:RDF>
+</x:xmpmeta></xdp:xdp>

@@ -1,0 +1,10 @@
+<html>
+<script>
+var sUrl = "wss://ldciqgs.wdf.sap.corp:44300/sap/bc/apc/sap/ping_pong"
+var ws = new WebSocket(sUrl); // chrome branch
+ws.onopen = function(){};
+ws.onmessage=function(evt) {
+	console.log(evt.data);
+}
+</script>
+</html>

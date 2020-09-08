@@ -1,0 +1,15 @@
+<html>
+<script>
+
+const pipe = (...fns) => x => fns.reduce((v, f) => f(v), x);
+ 
+const lowercase = s => s.toLowerCase();
+const split = s => s.split(' ');
+const join = s => s.join('-');
+ 
+const newFunc = pipe(lowercase, split, join);
+const result = newFunc('Jerry Java Scala'); 
+console.log(result); 
+
+</script>
+</html>

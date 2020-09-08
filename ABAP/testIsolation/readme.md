@@ -1,0 +1,1 @@
+For my blog [Four different TEST ISOLATION techniques to build your ABAP unit test](https://blogs.sap.com/2013/11/21/four-different-test-isolation-techniques-to-build-your-abap-unit-test/).

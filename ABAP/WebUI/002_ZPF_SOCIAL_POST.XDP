@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xfa generator="AdobeLiveCycleDesignerES_V10.4.0.20160610.1.923074_SAP" APIVersion="3.6.16064.0"?>
+<xdp:xdp xmlns:xdp="http://ns.adobe.com/xdp/" timeStamp="2017-05-01T16:51:44Z" uuid="399c5fb0-64d8-4fa1-bf38-04924c555105">
+<template xmlns:xliff="urn:oasis:names:tc:xliff:document:1.1" xmlns="http://www.xfa.org/schema/xfa-template/2.8/">
+   <?formServer defaultPDFRenderFormat acrobat9.0dynamic?>
+   <subform layout="tb" locale="en_US" name="data" restoreState="auto">
+      <pageSet>
+         <pageArea id="Page1" name="Page1">
+            <contentArea h="10.5in" w="8in" x="0.25in" y="0.25in" name="masterPage"/>
+            <medium long="11in" short="8.5in" stock="letter"/>
+            <?templateDesigner expand 1?></pageArea>
+         <?templateDesigner expand 1?></pageSet>
+      <subform h="10.5in" name="bdymain" w="8in">
+         <subform layout="tb" name="socialpost" w="98.425mm" x="6.35mm" y="53.975mm">
+            <bind match="none"/>
+            <field access="readOnly" h="9.525mm" name="POST_ID" w="100mm">
+               <ui>
+                  <textEdit>
+                     <border presence="hidden">
+                        <?templateDesigner StyleID aped0?></border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <caption reserve="38mm">
+                  <font baselineShift="0pt" size="14pt" typeface="Arial"/>
+                  <para marginLeft="0pt" marginRight="0pt" spaceAbove="0pt" spaceBelow="0pt" textIndent="0pt" vAlign="middle"/>
+                  <value>
+                     <text xliff:rid="DF8BD598-9467-422C-BAD3-19248E76A264">Social Post ID</text>
+                  </value>
+               </caption>
+               <bind match="dataRef" ref="$record.POST_ID"/>
+               <desc>
+                  <text name="Schema Annotation">Internal ID of Social Media Post</text>
+               </desc>
+               <?digestForSAP digest="b8ec139f89c7ba95fc5a04e26fc58d37"?></field>
+            <field access="readOnly" h="9mm" name="CONTENT" w="100mm">
+               <ui>
+                  <textEdit>
+                     <border presence="hidden">
+                        <?templateDesigner StyleID aped0?></border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <caption reserve="38mm">
+                  <para vAlign="middle"/>
+                  <value>
+                     <text xliff:rid="0BF85982-32EE-445B-8275-74802B365452">Post Content</text>
+                  </value>
+               </caption>
+               <bind match="dataRef" ref="$record.CONTENT"/>
+               <desc>
+                  <text name="Schema Annotation">Content of Social Media Post</text>
+               </desc>
+               <?digestForSAP digest="1efca160a859d931774a86f831e21022"?></field>
+            <field access="readOnly" h="9mm" name="CREATION_DATE_TIME" w="100mm">
+               <ui>
+                  <numericEdit>
+                     <border presence="hidden">
+                        <?templateDesigner StyleID aped0?></border>
+                     <margin/>
+                  </numericEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <value>
+                  <decimal fracDigits="-1" leadDigits="15"/>
+               </value>
+               <caption reserve="38mm">
+                  <para vAlign="middle"/>
+                  <value>
+                     <text xliff:rid="11108ED4-81AC-41A2-99ED-023F3AED639C">Post Created On</text>
+                  </value>
+               </caption>
+               <bind match="dataRef" ref="$record.CREATION_DATE_TIME"/>
+               <desc>
+                  <text name="Schema Annotation">Creation Date and Time of Social Media Post</text>
+               </desc>
+               <?digestForSAP digest="efa8d4f0a898854ff1e8a64577d7c99a"?></field>
+            <field access="readOnly" h="9mm" name="PROCESSOR" w="100mm">
+               <ui>
+                  <textEdit>
+                     <border presence="hidden">
+                        <?templateDesigner StyleID aped0?></border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <caption reserve="38mm">
+                  <para vAlign="middle"/>
+                  <value>
+                     <text xliff:rid="8790B6F4-313F-4BB1-9669-F9732AF062A8">Processor</text>
+                  </value>
+               </caption>
+               <value>
+                  <text maxChars="12"/>
+               </value>
+               <bind match="dataRef" ref="$record.PROCESSOR"/>
+               <desc>
+                  <text name="Schema Annotation">User Name in User Master Record</text>
+               </desc>
+               <?digestForSAP digest="bf0c7b6ae6424c36a9ee1d0ac66f1372"?></field>
+            <field access="readOnly" h="9mm" name="REPLY" w="100mm">
+               <ui>
+                  <textEdit>
+                     <border presence="hidden">
+                        <?templateDesigner StyleID aped0?></border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <caption reserve="38mm">
+                  <para vAlign="middle"/>
+                  <value>
+                     <text xliff:rid="931B0BDF-5052-4917-A9E4-57B5A17718AE">Replied By</text>
+                  </value>
+               </caption>
+               <value>
+                  <text maxChars="12"/>
+               </value>
+               <bind match="dataRef" ref="$record.REPLY"/>
+               <desc>
+                  <text name="Schema Annotation">User Name in User Master Record</text>
+               </desc>
+               <?digestForSAP digest="eb47fdf45e903a1e7391bd95a2cf8784"?></field>
+            <field access="readOnly" h="9mm" name="CREATED_BY" w="100mm">
+               <ui>
+                  <textEdit>
+                     <border presence="hidden">
+                        <?templateDesigner StyleID aped0?></border>
+                     <margin/>
+                  </textEdit>
+               </ui>
+               <font typeface="Arial"/>
+               <margin bottomInset="1mm" leftInset="1mm" rightInset="1mm" topInset="1mm"/>
+               <para vAlign="middle"/>
+               <caption reserve="38mm">
+                  <para vAlign="middle"/>
+                  <value>
+                     <text xliff:rid="B9D38FFC-3A28-4FF9-ACA7-2F6E387BAD51">Social User Name</text>
+                  </value>
+               </caption>
+               <value>
+                  <text maxChars="255"/>
+               </value>
+               <bind match="dataRef" ref="$record.CREATED_BY"/>
+               <desc>
+                  <text name="Schema Annotation">Social User Name</text>
+               </desc>
+               <?digestForSAP digest="864799d91425002b44ea88b69c37e8bc"?></field>
+            <?templateDesigner expand 1?></subform>
+         <draw h="25.4mm" name="Image1" w="40mm" x="139.7mm" y="9.525mm">
+            <value>
+               <image aspect="none" contentType="image/png">iVBORw0KGgoAAAANSUhEUgAAALMAAABwCAIAAADaCta+AAAAAXNSR0IArs4c6QAAAARnQU1BAACx
+jwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAABXjSURBVHhe7VwJdFRVmr61JDCKSwPOdM8ZGwXU
+rJXUHmxbxW7ZRzskgBvDLpCkKiEJqaQqC4Z9E9oZEEVlWBJWMQHBpUEQFRUxrLKvttiAkARCEAjJ
+m++/91VVCGF5cIbTJ+fW+Smq3rvvvlf//f7vX+69YYp8SQ00pgEm1SI10KgGWMVSKVIDjWhAKkVq
+oHENSL1IDUhkSL+pRQPSYqQGJGdosRgZmEuLkRqQnCE5Q4sGpMVIDUjO0GIxMs6QFiM1IDlDcoYW
+DUiLkRqQnKHFYmScIS1GakByhuQMLRqQFiM1IDlDi8XIOENajNSA5AzJGVo0IC1GakByhhaLkXGG
+tBipAckZkjO0aEBajNSA5AwtFiPjDGkxUgOSMyRnaNGAtBipAckZWixGxhnSYqQGJGdIztCiAWkx
+UgOSM7RYjIwzpMVIDUjOkJyhRQPSYqQGJGdosRgZZ0iLkRqQnCE5Q4sGpMVIDUjO0GIxMs6QFiM1
+IDlDcoYWDUiLkRqQnKHFYmScIS1GakByhuQMLRqQFiM1IDlDi8XIOENajNSA5AzJGVo0IC1GakBy
+hhaLkXGGtBipAckZkjO0aEBajNSA5AwtFiPjDGkxUgOSMyRnaNGAtBipAckZWixGxhnSYqQGJGdI
+ztCiAWkxUgOSM7RYjIwzpMVIDUjOkJyhRQPSYqQGJGdosZgbxhlnl7IzkGX+92UMR64QHMFZ/7va
+Ulx1pTS8sEE/V30Vl9e/6uo+tR65+hmkxdyKBiqX6s8tv7e89F/LV/ymorTV6RUtT69oVV7aCp8r
+S1pWlOJgy/IVQcHX60tlaUshVzdDt+WlrSuuENyIGp8pEdLgLL5SA42CJ3+gskRc+Jvy0pa3opcb
+2lPTbgAmOLqo9aRsS9LwP6cmd4G4XJ1cyZ3dyd1SkyBd3CnPkiR3gogGaUldRiR1xns96ZqW1E0I
+rnInd3WlCOnif8eHoLhT0C2J6C1NvAcEX+vLFTe6suU1TqXSA+AxcItOLleXlJRuEhmaNVC9nO1e
+2MbS5WkW/rLeNEwfPcQQM9AYPcQY/areNNgQ/aoQY9SrOILjIVGDIaFRgwymQWjglyF6U1AM0UP9
+ol4uOkHn+phB9SRwOT4ELucH/c34XXBqqEYZbIjpbzT1w2/hTzJMs16aNh/czK/jyGjr6J7ITB69
+tdDgyDfY8kIthUZrnt6eo7fnGmz5ehJ8zdU7vDpHDuOit3v1dp9fcuksCY7gkgK9rQAXCkFXRhtE
+fMVZ3hIdqj2L/hsI3U40xvPo7VrFp3d48PxGa36IZRR7LE0iQ7MGCBnFbeO6JupNWTRydq/Rmtvc
+XBBqzTHYs+irzWuw5RjtXoMdRwAIn86Ry4AAm89oDQg1U4UQw8WG9tkQIy60ZaMTA28TggvpWnzO
+DYo1F/eFGMQHOoUGvhBqBsnRKF6Dw2ew5xstBeyxEeaeYzTr5Wasqmm3ATJ2LWzr7B7PYkfATHUO
+DDyGITvElgUQGOyjDHYfYIHRDbFBgBsxonlGOgu4BCTH6MBnQIEfcRCM8G4EMvAZp3Ct3Rvi8FIz
+gto1BI1tBCbCk9o5bqRR+BOGWMEWqbEJY8oOHJfI0KwBgQz7f/4FyCAvYC9gjmw9hpOMO99gLWCW
+HGb1MEuWweox2klo5PjQ0vAHBQjINkDo2lyjHQJIET1w95FnsBcYbRB+HJxBZwPgABS4cEyghxAH
+NdCDruBT/HQlSOtmBJ2E2nJYmCsmYczmA/9QFEWzXpo2H9zMrxPIsPXoqYvJpPDClqdzZhEaIrJY
+eIoucujdttR7nOl32dMNphQWkcQi3CwqnVngLPxjTyPtDQEfcK9BZ8PTWHgqtYzAeyqLTNdZAQIe
+cwAiVnIoLDaLRYxQW4a7GUQ0xkGSdBaRgdAHNyKPBsYS0GlMrj4F9LCIlOj4QrAFYFGr1ElkaNYA
+jzPaObsl6mPSQ6wFBouXRQ//F1uK44XJyROXzCr5Zvm6XSu+OvT+hsNzP9o9fs4X/bzz7H0mt+qQ
+zSLdGHK0D+WhA4jBaM1pbvd0ds3tn7+oX+58SN/cBf3yi3p5FrR+IsdgzmwGJwWeQMwRmxnec1Lf
+vMV98xb2zS3um1vUN4/kFUj+whe9RT1cs+JemdKu+2stbECJi5ky0X+oLbeZFbfLDeGCD6FWuIx8
+chyISPhjiFMszB0TX7h5H8FCqSPRrJebsaqm3QbI2Ffc9g9d4pl5JDPnsMjUTsNmfPD59uqLNaTW
+xl5VF+u+2nZ09Ox1jpffaOHMDoWjsSFAKWBRGbEJE49VXW5wEb73yZwLJIXYPLBvnd0Hg06buPxa
+/YvjlxTl0Ikzq7/ckzll5cPdClhEssHsa26hsefhi68ZImULYDFKZ8/XkxdD50Cnj4W7TPGF2/cf
+E6jgb5clMjRrwJ+1JsALNLOkFcz6qOI81yd/+TVbKz7iv1oFA43/6XXojOLsO41FuQ3ObJ3DC4/g
+mfpxo+M9Z3WZ3uTWU6SSo7PnggZSxy29PjLUm/NGu/9e3j9/gd6UqrfkUTDrGKl3eigEcSAo9jWz
+wJF5OFzywBam+DHfHziJq+hB6anxr1azXpo2H9zMr+NxRjtLj14sbGjWG6v9iLhMo19XR0IvDgmi
+Zbxq6upUVlixYVfLx0cyS7bR6WFmzz2OkV9sORrEFKdxAbDDp8492h2kkonYU4fxi3C7VWTgFtQt
+vwEfRX5Vbd3lOuVinYJ3fKXbXahVhk9YzqJdOgJBNkiCkmenJ9Se1Zw8GlVWAM3YhHFl+8mJiJsH
+foFEhmYNcGS0j+zY1fnipHLBFrW1Su3l+tzQ0Lh5q19+vfz4y1NYRKaeMtscxJJ/GvDfGD8xvvyd
+hpkPNTmmpHGLYdDXQkZ9hgjcjnDIO8Hz4ODJqpq4vpNYdCoVKnh2Q6mQw8OjnDzAArHFVh5ycpj5
+Ucn/16yXm7Gqpt0GyPihuK35qT9Nm/ORGFQwMI2FQnb8/cGTU4s2ZL2xIv/tNTPf37Rm08ETFefF
+yE0pWs+ikpgN9J6ns2XropL+Ov8rdVBVJ3QJXADrF0a/cuP+Fo5MnRmlyVwW6XKNXaKCSJi2cvlC
+bd3ab/Ys+nhHyYaDZftPIs7g6KoBTglvnL1mLv1GF+lGdoNQlIorhI98Io/wVHP82B0Hf+G/QPi7
+oNeTyLgVwwAyts176M/PPbdx015ua7BSNYz4YsuB3z+Tzh57lYUns/AkFjn8XkeavdfEwtnrSjce
+CH9uFDOlw15RLWWxGQ92yt995LRqr4AXxlMhZNCA8kE9XV3T4eUJwIQOKWuEyz2uATLqKi/UxSUW
+sLCBzRzpv3s6e2De/COnznHiuXAZ+OBoQwDxwJPIeNNDrZTNhthRgyffZE4cs4VnIuL5ub+TyLi9
+hRpAxta5D/fo/cKu/T8LzSp1l4SVf/bN7nttSeyxJBaLQgWKYLmod7HoNBaV0tzhDrGkN7PlITto
+RulA8os5RRxQiAwuY2QC4YmKDP591JsrWPgwHWpQ4SlXcAYPCc6cV+yJE6nCgYghNoO175sx7X0e
+Z9SgTx741Px87pIpcRKlOdY8xLyooyATiek5auvBE8KFkNAthTdRHYrkjFvkjK3z2jybkPD9Dz9y
+KiYCJ5sjo1dWbdr/7KvT77GOYO1TWXQmiqF8QsSns1DeSDMgqFRafSGm5MVrd9Dg114maPB+duz+
+8ddLPI4lp0JQ+2bPifv/mEPpcUSSe6zITbjr4ret+FWx955AgQtQ6PCxsKSO/V9HFCo8CWeymjO1
+yuPIhsIRrxAy4ERMCYVbDwbrFqozVKNZgQ56uxXVNO0w4oa/DpyxY8FDjs6dFn36LR8qykvJ6P32
+VllTt/KLPcljl0bFj25uyaDiZqwHE6eogVKCgKwk2mNOmPyPimoRpNRw51FRdX64991dR8pFl0Ab
+/quuUXq43maRKH2mpo5bJpChxiSKcuqiYn9hIgoqmKBBAMEeSX4+dbYAGcGKtztbozzRF2GvizsR
+lyVhtKhycgAIGPD7+zuVyLh1kxDV8cgnO/5Xzhx1qChjhIWKvCBIyMcqz73/2d7+eUWtn0Qx26WL
+xUy3l9m9LGxEllrGoBHkSY2yccuPv30ireiTnbxPZDoiTlBmLfkcBTEWlpHC4wzB++IuFReU6OdG
+s3aDWVQqa++6z+IqXrudn8Tl/IkU5aeKi1Hx41gUVd9N8WNFOctftBCxRfCB+Q3V160r6Ia21VQb
+qPWMzvH3WdIWrdmlKpIqCRgK+BSIwIcalqLB5n0/D85f3iImncVkMau3hdO1ftsRYf+BYZk8Zz1r
+09c1QYSZ5JqEIR84fubBjgWsXVLyePWUWsFAnHFRGZQ31/ripKeGzBrkW/Tp1/u4xSO1uUhxD+Ch
+KOt/+OnuuFz2qNsSP2bHIcpE0K+ovPhhpn6qDwt8lsjQrAFCRnE7R/c+LCzlwWdzPvj8h3o6pWiU
+Yg4ODLW64D89e+nG++My2SMpzwyZfq6G873IRFDYrlO6Dn+TPTzMklhYeV5U2XG96hP6e4pZm37D
+xy1Wj3OOIV6prTtbXXPq3KXKC/Xr6+hMfQA08s38kLUZEttz6ra9opyFW9YryPmf7Wre0KyXpsoE
+N/+7/DNqvVHEZOaMe+LSMqeUHDhWGcAHhoUUzYN+PzpUzU+ct6HZI4OmqmUM8vGCNRAS/ttTPhaZ
+fbd15KffUVWUDx+voirKkk+2s7ABw8YIZPg9FjFUkJZ4MsIhCddGTehU2eHTD/zBHdWjcNsBSo/V
+uoWgi3pej/cZ7Er8EIkMzRoQnGHv0UsXOxIlRYADU+Ftu4zKfH3Z+rKDZ38NMoiKjUB0pygnqmsG
+jJixeSelu7zaiXSXhmTCgvUsYhhyXdB+xrQPVRz5w9pjp8+365IzqGCB6Fo4KgozqSzmjxkCPkFF
+pXL0l6q4l8a07+LdcugUB+olcBEHR8MJvED0Enx0iYybp4pAS8EZcV0T9NEjMd2FdIOhpBg9kj02
+tHWH7Kf7zRg1a/WGsgPV3AipHMmdP0cAuYm9B36qqgZ8VMvFEdQukyYsvcvmutuecZc5rU/WrCqU
+MXl+grEXEWJS4fwB2bP9nKEWLHFho9Ejrvl40wFT/Kjw7rlb9lHdgp5CBZEoYTQedUpkaOaJ+gAS
+60A7dOtJyEAqGJujo2WYqC2OYmYsw0nFTFsLe2qC+62y/XxUMLrkFniE6mcDDFMgV8RA/Xy6+vOy
+Q6vW7Vjz7WHMpNdQdQSEoMYq6GPVhi0jxy/gxq66AXIb9UYSkcbxqovf7/9x/odbXsooMkQMfaR7
+ThkPOQmQorx5hQepD4NGPt+Wjm7B4JrAJRwZDzu7J7CYkcyW1bpjgTEW66nSMIOqs3lDacldLjP7
+2IMDEt0zLhAUKPDA6BCZU+SB4LOG2EMUOwVEGrw4MniMogYtx0+fXfzRt7y3gNHXnbtQh9zE+dKE
+J/tPe+Kl6dEJ4x54JsNgcrHfDzb9ZfTOwxRbcI9UA+7BTQVZqBQWdEp+F3XlM0hkaNYAkLFnYdu4
+bgkoMbV6Mmvlt4ffWbYxrs/4EBuq4C7MjqJ0QUvxwoZ4p3/AzZrHhSJXFBGpP4zkiOCOg6civEZO
+DWt5gsMjEFESpUMny8/xiDOYD6MGGvb8aGQ0LBz1NNw9k8VmYy2nrfdrW/laTmpKYKR5YMqoGyLw
+ej5Fs16agNHf5k8Q3sSG/SbtBw94rUhY2smqy8u+3Jv31ieD84te8rw7pGDeW0u+rDyPBJL7ERoV
+sSxGjUqJEeqRhZpIwn8Ii1aDVs4Z13YCqHTZ+4ynFYQ2TOt7aeIt3G3uhboFJahUfQvSQKDTGziR
+wGmJDM0aEJWu2M7xrZwZX+4OLG4Iarx+/qemmMhBQObiCxVMeY2yFolJHerfVy8SRA/naR5GxBIB
++heTuv6vilJ+QenQexyWB+swg4pJtbBka6/xO49QJoJ7CLYRDCUe7sZhZz3YaNbLbRpcE7ickFHU
+zvxU5xRRYKjDlBiFDv6IMDAM4AkcvHJA1CSF1zfraPbMM73k+eFTx7y5+u0PvvzfVZveKf1q7Ow1
+vd2zMiYtvcB75/PzFMRyUcEl6ACc4cSMGmZVMJ0WMczWq3C7f4mvCGEkMu4ovoGMnQseiuvafebK
+7+rZGIWW3EOo1U++2OJioEZ+4nTVeXUJsQgj6f3IqerfdcpjbZNYezdJ+Aj2aBJ7NJm1S/5tR8+e
+4xXC1FWWuMrkzwIZfSbz/QRplsTxO9TYQgS0V7CF5Iw7ARFe6Wpr7f5cyz+OGDhqwSdf7z917pqr
+xjEkODt9/ppJ75Rc7eEX/22LLsbFMClvxWKOfMb3FMEv6FAmMaXMWcWn6a/9QlXE8eIU1magKXHy
+zsNUhOW1s0C0clN1i2t1fydU2QQ8SIN6xp7i9h269sZKf6Qh9zlGOl+ZljKx+L3Sjeu3HcKKmF1/
+P7P9xzNle0+t+mxH3l+X215+nUUO65727hvFn02d+9HUeasnzft44vy10+etf3bgG7roDOw6wRY3
+5vRizzH2EGBXCDYtMlPGU/1mTpu3duq8T6Y0Jq/P//S199a2eiIzumdhGV+0509+guWL6wPr+mcl
+MjRrgHKTonZx3fowM9b6+vSxmO9IY2HDjNhkYM1q9Uzuf3QZ/e+dRt//uNdoonUVtH4H4SEWd0Vi
+81kKi0yi1aDIbyPdelOmkbbS035DvqsMyKDdjnrscHT6dLEjWGQytWxEsKkphbXpjz2oWw5S3UJR
+4LmEvwmmtRIZmkf3dmiMZ63tnchasa/ViSVb2PGMVTk5IWaOEnMWw2y7KYvqoVgGjFXaWGNn92CL
+h96Sq8PiHSt2I+YZLDm065V2pWI3sy+ElnthKR5WeGNzPXor4AvAPNgmhAVgWBKmt2JhWFAoQQ1L
+NSdO+uFoOQcDOQ7kI/sPH9999AQwIjyLWA0QfGlJTu6oTm9nPP55rg3sXsSyWzJuvsmYb37nu1XV
+bem0jd0vtE2Zll3xjep8X7zYLM+FH/d/xnH/30Hgm5v5bnqs18KfYEAb2rxksOfhbyJgAYDthQnb
++fYhMUNWebb6rYVrR7+5qvCdT2cs+by8CgvWEeYiMVYLJFpQQZ1KZGjWgKh0OVEDjc3AGi2xjwPb
+l/3IqDfSQXDUB4qmz7RZHshohr+1YsduIoSoWCyeZuk9dtshggWfqaftBO9/vPn1OWunFn09uXiT
+739WlazleRPN8qv+RSJD80hrZaM7iQxsWAJP4C8miN0iICeUs8y9xu/gy0Wp1kEjT0Xzt5asW7Xx
+cOrYxZ6pJaXfHn1nyZorESGA0XARxnUCkf93PWrV+z9/+zuJDLgeZLPYOBSKyBQTdZFpzhfGbhUz
+qLzATtMivOz1wdrvJr73t0Xrdi9at2/Ce2tK1m4WQBC7Gf2YkMi4vR0l10fnHUUGxS74g13wWdmY
+2o3tM233sSrV0NWCGc2j4uP5Xy/NXPZVxrQVGVNXzli4vvoCuRgBGn9BXRtn/B8ufqhFcMGklAAA
+AABJRU5ErkJggg==</image>
+            </value>
+            <ui>
+               <imageEdit/>
+            </ui>
+            <desc>
+               <text name="embeddedHref">\\TSHomeServer\TSHome$\i042416\Desktop\logo.png</text>
+            </desc>
+            <margin leftInset="0mm"/>
+         </draw>
+         <?templateDesigner expand 1?></subform>
+      <proto/>
+      <desc>
+         <text name="version">9.0.1.0.20110721.1.850821.583615</text>
+      </desc>
+      <?templateDesigner expand 1?>
+      <?renderCache.subset "Arial" 0 0 ISO-8859-1 4 100 25 0003002500260027002C0031003200330035003600380044004600470048004C004F0050005100520053005500560057005C BCDINOPRSUacdeilmnoprsty?></subform>
+   <?templateDesigner DefaultPreviewDynamic 1?>
+   <?templateDesigner DefaultRunAt client?>
+   <?templateDesigner DefaultLanguage JavaScript?>
+   <?acrobat JavaScript strictScoping?>
+   <?templateDesigner Grid show:1, snap:1, units:17, color:ff8080, origin:(0,0), interval:(79375,79375), objsnap:0, guidesnap:0, pagecentersnap:-1749913362?>
+   <?templateDesigner SaveTaggedPDF 1?>
+   <?templateDesigner SavePDFWithEmbeddedFonts 1?>
+   <?templateDesigner FormTargetVersion 28?>
+   <?templateDesigner Rulers horizontal:1, vertical:1, guidelines:1, crosshairs:0?>
+   <?templateDesigner Zoom 66?></template>
+<config xmlns="http://www.xfa.org/schema/xci/2.8/">
+   <agent name="designer">
+      <!--  [0..n]  -->
+      <destination>pdf</destination>
+      <pdf>
+         <!--  [0..n]  -->
+         <fontInfo/>
+      </pdf>
+      <common>
+         <template>
+            <base>https://ldciag3.wdf.sap.corp:44354/sap/bc/fp/form/layout/</base>
+         </template>
+      </common>
+   </agent>
+   <present>
+      <!--  [0..n]  -->
+      <pdf>
+         <!--  [0..n]  -->
+         <version>1.7</version>
+         <adobeExtensionLevel>3</adobeExtensionLevel>
+      </pdf>
+      <common>
+         <data>
+            <xsl>
+               <uri/>
+            </xsl>
+            <outputXSL>
+               <uri/>
+            </outputXSL>
+         </data>
+      </common>
+      <xdp>
+         <packets>*</packets>
+      </xdp>
+   </present>
+</config>
+<connectionSet xmlns="http://www.xfa.org/schema/xfa-connection-set/2.8/">
+   <xsdConnection dataDescription="data" name="ZPF_SOCIAL_POST">
+      <uri/>
+      <rootElement>data</rootElement>
+   </xsdConnection>
+</connectionSet>
+<xfa:datasets xmlns:xfa="http://www.xfa.org/schema/xfa-data/1.0/">
+   <xfa:data xfa:dataNode="dataGroup"/>
+   <dd:dataDescription xmlns:dd="http://ns.adobe.com/data-description/" dd:name="data">
+      <data>
+         <POST_ID/>
+         <CONTENT/>
+         <CREATION_DATE_TIME/>
+         <PROCESSOR/>
+         <REPLY/>
+         <CREATED_BY/>
+      </data>
+   </dd:dataDescription>
+</xfa:datasets>
+<localeSet xmlns="http://www.xfa.org/schema/xfa-locale-set/2.7/">
+   <locale desc="English (United States)" name="en_US">
+      <calendarSymbols name="gregorian">
+         <monthNames>
+            <month>January</month>
+            <month>February</month>
+            <month>March</month>
+            <month>April</month>
+            <month>May</month>
+            <month>June</month>
+            <month>July</month>
+            <month>August</month>
+            <month>September</month>
+            <month>October</month>
+            <month>November</month>
+            <month>December</month>
+         </monthNames>
+         <monthNames abbr="1">
+            <month>Jan</month>
+            <month>Feb</month>
+            <month>Mar</month>
+            <month>Apr</month>
+            <month>May</month>
+            <month>Jun</month>
+            <month>Jul</month>
+            <month>Aug</month>
+            <month>Sep</month>
+            <month>Oct</month>
+            <month>Nov</month>
+            <month>Dec</month>
+         </monthNames>
+         <dayNames>
+            <day>Sunday</day>
+            <day>Monday</day>
+            <day>Tuesday</day>
+            <day>Wednesday</day>
+            <day>Thursday</day>
+            <day>Friday</day>
+            <day>Saturday</day>
+         </dayNames>
+         <dayNames abbr="1">
+            <day>Sun</day>
+            <day>Mon</day>
+            <day>Tue</day>
+            <day>Wed</day>
+            <day>Thu</day>
+            <day>Fri</day>
+            <day>Sat</day>
+         </dayNames>
+         <meridiemNames>
+            <meridiem>AM</meridiem>
+            <meridiem>PM</meridiem>
+         </meridiemNames>
+         <eraNames>
+            <era>BC</era>
+            <era>AD</era>
+         </eraNames>
+      </calendarSymbols>
+      <datePatterns>
+         <datePattern name="full">EEEE, MMMM D, YYYY</datePattern>
+         <datePattern name="long">MMMM D, YYYY</datePattern>
+         <datePattern name="med">MMM D, YYYY</datePattern>
+         <datePattern name="short">M/D/YY</datePattern>
+      </datePatterns>
+      <timePatterns>
+         <timePattern name="full">h:MM:SS A Z</timePattern>
+         <timePattern name="long">h:MM:SS A Z</timePattern>
+         <timePattern name="med">h:MM:SS A</timePattern>
+         <timePattern name="short">h:MM A</timePattern>
+      </timePatterns>
+      <dateTimeSymbols>GyMdkHmsSEDFwWahKzZ</dateTimeSymbols>
+      <numberPatterns>
+         <numberPattern name="numeric">z,zz9.zzz</numberPattern>
+         <numberPattern name="currency">$z,zz9.99|($z,zz9.99)</numberPattern>
+         <numberPattern name="percent">z,zz9%</numberPattern>
+      </numberPatterns>
+      <numberSymbols>
+         <numberSymbol name="decimal">.</numberSymbol>
+         <numberSymbol name="grouping">,</numberSymbol>
+         <numberSymbol name="percent">%</numberSymbol>
+         <numberSymbol name="minus">-</numberSymbol>
+         <numberSymbol name="zero">0</numberSymbol>
+      </numberSymbols>
+      <currencySymbols>
+         <currencySymbol name="symbol">$</currencySymbol>
+         <currencySymbol name="isoname">USD</currencySymbol>
+         <currencySymbol name="decimal">.</currencySymbol>
+      </currencySymbols>
+      <typefaces>
+         <typeface name="Myriad Pro"/>
+         <typeface name="Minion Pro"/>
+         <typeface name="Courier Std"/>
+         <typeface name="Adobe Pi Std"/>
+         <typeface name="Adobe Hebrew"/>
+         <typeface name="Adobe Arabic"/>
+         <typeface name="Adobe Thai"/>
+         <typeface name="Kozuka Gothic Pro-VI M"/>
+         <typeface name="Kozuka Mincho Pro-VI R"/>
+         <typeface name="Adobe Ming Std L"/>
+         <typeface name="Adobe Song Std L"/>
+         <typeface name="Adobe Myungjo Std M"/>
+      </typefaces>
+   </locale>
+</localeSet>
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 4.2.1-c043 52.454262, 2011/01/31-17:27:06        ">
+   <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <rdf:Description xmlns:xmp="http://ns.adobe.com/xap/1.0/" rdf:about="">
+         <xmp:MetadataDate>2017-05-01T16:51:44Z</xmp:MetadataDate>
+         <xmp:CreatorTool>Adobe LiveCycle Designer ES 10.4</xmp:CreatorTool>
+      </rdf:Description>
+      <rdf:Description xmlns:pdf="http://ns.adobe.com/pdf/1.3/" rdf:about="">
+         <pdf:Producer>Adobe LiveCycle Designer ES 10.4</pdf:Producer>
+      </rdf:Description>
+      <rdf:Description xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/" rdf:about="">
+         <xmpMM:DocumentID>uuid:399c5fb0-64d8-4fa1-bf38-04924c555105</xmpMM:DocumentID>
+      </rdf:Description>
+      <rdf:Description xmlns:desc="http://ns.adobe.com/xfa/promoted-desc/" rdf:about="">
+         <desc:version rdf:parseType="Resource">
+            <rdf:value>9.0.1.0.20110721.1.850821.583615</rdf:value>
+            <desc:ref>/template/subform[1]</desc:ref>
+         </desc:version>
+      </rdf:Description>
+   </rdf:RDF>
+</x:xmpmeta></xdp:xdp>

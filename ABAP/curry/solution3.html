@@ -1,0 +1,48 @@
+<html>
+<script type="text/javascript">
+// https://babeljs.io/repl/#?babili=false&evaluate=true&lineWrap=false&presets=es2015%2Creact%2Cstage-2&targets=&browsers=&builtIns=false&code=
+	const conversion1 = input => input.split(' ').map(str => str.toLowerCase()).join('-');
+
+    // console.log(conversion1("Jerry ABAP"));
+
+	const curry = fn => (...args) => fn.bind(null, ...args);
+  
+  const map = curry((fn, arr) => arr.map(fn));
+	const join = curry((str, arr) => arr.join(str));
+	const toLowerCase = str => str.toLowerCase();
+	const split = curry((splitOn, str) => str.split(splitOn));
+
+	const conversion2 = input => join('-')(map(toLowerCase)(split(' ')(input)));
+
+  console.log(conversion2("Jerry Java"));
+
+  	// Jerry 2017-02-25 2:37PM 第二个 =>x是偏参数
+  	// const compose = (...fns) => x => fns.reduceRight((v, f) => f(v), x);
+
+  	var compose = function compose() {
+  		for (var _len = arguments.length, fns = Array(_len), _key = 0; _key < _len; _key++) {
+    		fns[_key] = arguments[_key];
+  	}
+
+  	return function (x) {
+  		// fns must be an array!
+    	return fns.reduceRight(function (v, f) {
+      		return f(v);
+    	}, x);
+  };
+
+};
+
+//var tasks = [join('-'), map(toLowerCase), split(' ')];
+
+//const toSlug = compose(tasks);
+  	const toSlug = compose(
+  		join('-'),
+  		map(toLowerCase),
+  		split(' ')
+	);
+
+ 
+console.log(toSlug('JS Cheerleader')); // 'js-cheerleader'
+</script>
+</html>

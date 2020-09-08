@@ -1,0 +1,1 @@
+For my SCN blog [Enable CRM Service Order application with edit functionality](https://blogs.sap.com/2016/04/10/enable-crm-service-order-application-with-edit-functionality/comment-page-1/#comment-368775)

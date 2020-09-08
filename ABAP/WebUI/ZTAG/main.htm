@@ -1,0 +1,34 @@
+<%@page language="abap"%>
+<%@extension name="htmlb" prefix="htmlb"%>
+<script type="text/javascript" src="test.js"></script>
+<div id="tagCloud">
+<style type = "text/css">
+  #tagCloud {
+    height: 300px;
+    width: 600px;
+    position: relative;
+    margin: 0;
+    overflow: hidden;
+}
+#tagCloud a {
+    position: absolute;
+    text-decoration: none;
+    color: #0B61A4;
+    text-shadow: #66A3D2 1px -1px 1px;
+}
+</style>
+
+    <ul>
+        <li><a href="#">Jerry</a></li>
+        <li><a href="#">Java</a></li>
+        <li><a href="#">JavaScript</a></li>
+        <li><a href="#">Scala</a></li>
+        <li><a href="#">C++</a></li>
+        <li><a href="#">C#</a></li>
+    </ul>
+    <script type="text/javascript">
+
+          var tagCloud = new JsTagCloud({ CloudId: 'tagCloud' });
+          tagCloud.start();
+    </script>
+</div>

@@ -1,0 +1,125 @@
+<html>
+<head>
+  <script type="text/javascript" src="jquery_1.7.1.js">
+    </script>
+    <script type="text/javascript" src="jchart/jchartfx.system.js">
+    </script>
+    <script type="text/javascript" src="jchart/jchartfx.coreVector.js">
+    </script>
+    <script type="text/javascript" src="jchart/jchartfx.coreVector3D.js">
+    </script>
+    <script type="text/javascript" src="jchart/jchartfx.advanced.js">
+    </script>
+    <script type="text/javascript" src="jchart/jchartfx.gauge.js">
+    </script>
+    <script type="text/javascript">
+        function initialize() {
+          var chart1 = new cfx.Chart();
+          chart1.create('divChart1');
+          chart1.setGallery(cfx.Gallery.Bar);
+      PopulateCarProduction(chart1);
+      chart1.getView3D().setEnabled(true);
+        title = new cfx.TitleDockable();
+      title.setText("Ticket process status");
+      chart1.getTitles().add(title);
+        }
+
+        function PopulateCarProduction(chart) {
+            var items = [{
+            "New": 4,
+            "In Process": 4,
+            "Done": 3,
+            "Month": "2014-7-22"
+            },
+            {
+            "New": 6,
+            "In Process": 2,
+            "Done": 8,
+            "Month": "2014-7-23"
+            },
+            {
+            "New": 2,
+            "In Process": 2,
+            "Done": 3,
+            "Month": "2014-7-24"
+            },
+            {
+            "New": 2,
+            "In Process": 3,
+            "Done": 4,
+            "Month": "2014-7-25"
+            },
+            {
+            "New": 3,
+            "In Process": 2,
+            "Done": 7,
+            "Month": "2014-7-28"
+            },
+            {
+            "New": 2,
+            "In Process": 4,
+            "Done": 5,
+            "Month": "2014-7-29"
+            },
+            {
+            "New": 1,
+            "In Process": 6,
+            "Done": 4,
+            "Month": "2014-7-30"
+            }
+        ];
+        chart.setDataSource(items);
+    }
+
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="jchart/jchartfx.attributes.aurora.css" />
+
+    <link rel="stylesheet" type="text/css" href="jchart/jchartfx.palette.aurora.css" />
+
+    <style type="text/css">
+        .jchartfx .Attribute0 {
+            fill: #FF0040;
+            stroke: #266E66;
+        }
+
+        .jchartfx .Attribute1 {
+            fill: #FFFF00;
+            stroke: #266E66;
+        }
+
+        .jchartfx .Attribute3 {
+            fill: ##3ADF00;
+            stroke: #3C3E46;
+        }
+
+        .jchartfx .AxisY_Text {
+            fill: #FEFEFE;
+        }
+
+        .jchartfx .AxisX_Text {
+            fill: #FEFEFE;
+        }
+
+        .jchartfx .Title {
+            fill: #FEFEFE;
+        }
+
+        .jchartfx .LegendItem {
+            fill: #FEFEFE;
+        }
+    </style>
+</head>
+<body class="jchartfx_body">
+  <div class="jchartfx_container">
+            <div id="divChart1" style="width:990px;height:270px;display:inline-block;position:absolute;left:200px;top:150px"></div>
+
+        <script language="javascript">
+            $(document).ready(function ($) {
+                initialize();
+            });
+        </script>
+    </div>
+</div>
+</body>
+</html>

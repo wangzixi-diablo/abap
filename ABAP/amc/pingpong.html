@@ -1,0 +1,480 @@
+<!DOCTYPE HTML>
+<head>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+  <meta charset='utf-8'>
+  <title>SAP Ping-Pong</title>
+</head>
+<body id='sap'>
+  <div id='container'>
+    <div id='divScore'></div>
+    <div id='divPlayerList'></div>
+    <div id='divGame'>
+      <canvas id='game' height='300' width='600'></canvas>
+    </div>
+    <div id='divMessage'></div>
+  </div> 
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+  <script src='//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js'></script>
+  <script defer>
+    var SAPGame=(function(){
+      var _x=0,_y=0,_dx=4,_dy=2,_resetx=_dx,_r=10,_factor=1,_width,_height,_rate=(1000/100);
+      var _context=null,_timer,_play,_nextPlayer=1,_player1={},_player2={},_active=false;
+      function circle(x,y,r,color)
+      {
+        _context.fillStyle=color;
+        _context.beginPath();
+        _context.arc(x,y,r,0,Math.PI*2,true);
+        _context.closePath();
+        _context.fill();
+      }
+      function rect(x,y,w,h,color)
+      {
+        _context.fillStyle=color;
+        _context.beginPath();
+        _context.rect(x,y,w,h);
+        _context.closePath();
+        _context.fill();
+      }
+      function draw()
+      {
+        _context.clearRect(0,0,_width,_height);
+        if(_player1.up && _player1.y>0){
+          _player1.y-=2;
+        }
+        else if(_player1.down && _player1.y<=_height-_player1.h){
+          _player1.y+=2;
+        }
+        if(_player2.up && _player2.y>0){
+          _player2.y-=2;
+        }
+        else if(_player2.down && _player2.y<=_height-_player2.h){
+          _player2.y+=2;
+        }
+        if(!_active){
+          if(_nextPlayer==1){
+            _x=_player1.w+_player1.w/2+2;
+            _y=_player1.y+(_player1.h/2);
+          }
+          else{
+            _x=_width-_player2.w-(_player1.w/2+2);
+            _y=_player2.y+(_player2.h/2);
+          }
+        }
+        circle(_x,_y,_r,'#fdb813');
+        rect(0,_player1.y,_player1.w,_player1.h,'#fff');
+        rect(_width-_player2.w,_player2.y,_player2.w,_player2.h,'#fff');
+        _timer=setTimeout(draw,_rate);
+      }
+      function resetGame()
+      {
+        clearInterval(_play);
+        clearTimeout(_timer);
+        _active=false;
+        _dx=_resetx;
+        _factor=1;
+        _timer=setTimeout(draw,_rate);
+      }
+      function playGame()
+      {
+        if(!_active)
+          return false;
+        if(_y+_dy>_height-2*_r || _y+_dy<2*_r){
+          _dy=-_dy;
+        }
+        if(_x+_dx<=_player1.w+_r){
+          if(_y>_player1.y && _y<_player1.y+_player1.h && _x>_player1.w){
+            _dx=-_dx;
+            _factor+=0.1;
+          }
+          else if(_x<-_r){
+            resetGame();
+            _player2.score++;
+            _nextPlayer=1;
+            SAPFont.setScore(_player1.score,_player2.score,5);
+          }
+        }
+        else{
+          if(_x+_dx>=_width-_player2.w-_r){
+            if(_y>_player2.y && _y<_player2.y+_player2.h && _x<_width-_player2.w){
+              _dx=-_dx;
+              _factor+=0.1;
+            }
+            else if(_x>_width+_r){
+              resetGame();
+              _player1.score++;
+              _nextPlayer=2;
+              SAPFont.setScore(_player1.score,_player2.score,5);
+            }
+          }
+        }
+        _x+=_dx*_factor;
+        _y+=_dy*_factor;
+      }
+      return{
+        init:function(canvas){
+          if(canvas.getContext){
+            _player1={y:100,w:20,h:100,up:false,down:false,score:0};
+            _player2={y:100,w:20,h:100,up:false,down:false,score:0};
+            _context=canvas.getContext('2d');
+            _width=600;
+            _height=300;
+            _timer=setTimeout(draw,_rate);
+          }
+        },
+        setScore:function(p1,p2){
+          _player1.score=p1;
+          _player2.score=p2;
+        },
+        onPLAYER1:function(up){
+          if(up==true){
+            _player1.up=true;setTimeout(function(){_player1.up=false;},300);
+          }
+          else{
+            _player1.down=true;setTimeout(function(){_player1.down=false;},300);
+          }
+        },
+        onPLAYER2:function(up){
+          if(up==true){
+            _player2.up=true;setTimeout(function(){_player2.up=false;},300);
+          }
+          else{
+            _player2.down=true;setTimeout(function(){_player2.down=false;},300);
+          }
+        },
+        onStart:function(){
+          if(!_active){
+            _active=true;
+            _play=setInterval(playGame,_rate);
+          }
+        },
+        onKeyDown:function(e){
+          var key=e.keyCode;
+          switch(key){
+            case 74:
+              _player1.up=true;
+              break;
+            case 78:
+              _player1.down=true;
+              break;
+            case 75:
+              _player2.up=true;
+              break;
+            case 77:
+              _player2.down=true;
+              break;
+          }
+        },
+        onKeyUp:function(e){
+          var key=e.keyCode;
+          switch(key){
+            case 74:
+              _player1.up=false;
+              break;
+            case 78:
+              _player1.down=false;
+              break;
+            case 75:
+              _player2.up=false;
+              break;
+            case 77:
+              _player2.down=false;
+              break;
+            case 76:
+              SAPGame.onStart();
+              break;
+          }
+        }
+      }
+    })();
+    var SAPFont=(function(){
+      var _k='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+      var _strMessage="";
+      var _strPlayer1="";
+      var _strPlayer2="";
+      var _a=[/* */ ',,,,,,', //32
+             /*!*/ '2,2,2,2,2,,2',
+             /*"*/ ',1+3,1+3,,,,',
+             /*#*/ '1+3,1+3,0-4,1+3,0-4,1+3,1+3',
+             /*$*/ '1-3,0+2+4,0+2,1-3,2+4,0+2+4,1-3',
+             /*%*/ ',4,1+3,2,1+3,0,',
+             /*&*/ ',,2,1-3,2,,',
+             /*'*/ ',2,2,,,,',
+             /*(*/ '2,1,1,1,1,1,2',
+             /*)*/ '2,3,3,3,3,3,2',
+             /***/ '2,0+2+4,1-3,0-4,1-3,0+2+4,2',
+             /*+*/ ',,2,1-3,2,,',
+             /*,*/ ',,,,2,2,1',
+             /*-*/ ',,,1-3,,,',
+             /*.*/ ',,,,,,2',
+             /*/*/ ',,4,3,2,1,0',
+             /*0*/ '1-3,0+4,0+1+4,0+2+4,0+3+4,0+4,1-3',
+             /*1*/ '2,1+2,2,2,2,2,1-3',
+             /*2*/ '1-3,0+4,4,3,2,1,0-4',
+             /*3*/ '1-3,0+4,4,1-3,4,0+4,1-3',
+             /*4*/ '0,0+2,0+2,0-4,2,2,2',
+             /*5*/ '0-4,0,0,1-3,4,0+4,1-3',
+             /*6*/ '1-3,0+4,0,0-3,0+4,0+4,1-3',
+             /*7*/ '0-4,4,3,2,1,1,1',
+             /*8*/ '1-3,0+4,0+4,1-3,0+4,0+4,1-3',
+             /*9*/ '1-3,0+4,0+4,1-4,4,0+4,1-3',
+             /*:*/ ',,2,,2,,',
+             /*;*/ ',,2,,2,2,1',
+             /*<*/ ',3,2,1,2,3,',
+             /*=*/ ',,1-3,,1-3,,',
+             /*>*/ ',1,2,3,2,1,',
+             /*?*/ '1-3,0+4,4,2+3,2,,2',
+             /*@*/ ',,2,1-3,2,,',
+             /*A*/ '1-3,0+4,0+4,0-4,0+4,0+4,0+4',
+             /*B*/ '0-3,0+4,0+4,0-3,0+4,0+4,0-3',
+             /*C*/ '1-4,0,0,0,0,0,1-4',
+             /*D*/ '0-3,0+4,0+4,0+4,0+4,0+4,0-3',
+             /*E*/ '0-4,0,0,0-3,0,0,0-4',
+             /*F*/ '0-4,0,0,0-3,0,0,0',
+             /*G*/ '1-4,0,0,0+2+3+4,0+4,0+4,1-3',
+             /*H*/ '0+4,0+4,0+4,0-4,0+4,0+4,0+4',
+             /*I*/ '1-3,2,2,2,2,2,1-3',
+             /*J*/ '1-4,3,3,3,3,0+3,1+2',
+             /*K*/ '0+4,0+3,0+2,0+1,0+2,0+3,0+4',
+             /*L*/ '0,0,0,0,0,0,0-4',
+             /*M*/ '0+4,0+4,0+1+3+4,0+2+4,0+4,0+4,0+4',
+             /*N*/ '0+4,0+4,0+1+4,0+2+4,0+3+4,0+4,0+4',
+             /*O*/ '1-3,0+4,0+4,0+4,0+4,0+4,1-3',
+             /*P*/ '0-3,0+4,0+4,0-3,0,0,0',
+             /*Q*/ '1-3,0+4,0+4,0+4,0+2+4,0+3,1+2+4',
+             /*R*/ '0-3,0+4,0+4,0-3,0+2,0+3,0+4',
+             /*S*/ '1-3,0+4,0,1-3,4,0+4,1-3',
+             /*T*/ '0-4,2,2,2,2,2,2',
+             /*U*/ '0+4,0+4,0+4,0+4,0+4,0+4,1-3',
+             /*V*/ '0+4,0+4,0+4,0+4,0+4,1+3,2',
+             /*W*/ '0+4,0+4,0+4,0+2+4,0+2+4,0+2+4,1+3',
+             /*X*/ '0+4,0+4,1+3,2,1+3,0+4,0+4',
+             /*Y*/ '0+4,0+4,1+3,2,2,2,2',
+             /*Z*/ '0-4,4,3,2,1,0,0-4',
+             /*[*/ '1-3,1,1,1,1,1,1-3',
+             /*\\*/ ',0,1,2,3,4,',
+             /*]*/ '1-3,3,3,3,3,3,1-3',
+             /*^*/ '2,1+3,0+4,,,,',
+             /*_*/ ',,,,,,1-3',
+             /*`*/ '2,3,,,,,']; //96
+      function _ch(a,b,r){
+        var w='#fff'
+        var m='',i,j,c,f,v,x,y;
+        for(i=0;i<7;i++){
+          v=a.split(',')[i];
+          x=v.split('+');
+          y=v.split('-');
+          for(j=0;j<5;j++){
+            f='#222';
+            if(x.length>1){
+              for(c=0;c<x.length;c++){
+                if(x[c]==j){
+                  f=w;
+                  break;
+                }
+              }
+            }
+            else if((y.length==2&&j>=y[0]&&j<=y[1])||v[0]==j){
+              f=w;
+            }
+            m+="<circle cx='"+(r*2+j*r*2)+"' cy='"+(b*8*2*r+r*2+i*r*2)+"' r='"+r+"' fill='"+f+"'/>";
+          }
+        }
+        return m;
+      }
+      var _sbg={};
+      function _bg(r){
+        if(!_sbg[r]){
+          var i,m='';
+          for(i=0;i<64;i++){
+            m+=_ch(_a[i],i,r);
+          }
+          _sbg[r]=SAPFont.getBGImg(6*2*r,64*8*2*r,m);
+        }
+        return _sbg[r];
+      }
+      return{
+        encode:function(s){
+          if(typeof(btoa)==='function'){
+            return btoa(s)
+          }
+          var i,o='',c,d,e,f,g,h,k,j;
+          for(i=0;i<s.length;i++){
+            c=s.charCodeAt(i++);
+            d=s.charCodeAt(i++);
+            e=s.charCodeAt(i);
+            f=c>>2;
+            g=((c&3)<<4)|(d>>4);
+            h=((d&15)<<2)|(e>>6);
+            k=e&63;
+            if(isNaN(d))
+              h=k=64;
+            else if(isNaN(e))
+              k=64;
+            o+=_k[f]+_k[g]+_k[h]+_k[k]
+          }
+          return o; //YOU WON'T BELIEVE YOUR EYE!, TG INNOVATION FRIDAY
+        },
+        getBGImg:function(w,h,s){
+          return "url(\"data:image/svg+xml;base64,"+SAPFont.encode("<svg width='"+w+"px' height='"+h+"px' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 "+w+" "+h+"'>"+s+"</svg>")+"\")";
+        },
+        setMessage:function(s,r){
+          _strMessage=s.toUpperCase();
+          SAPFont.updateMessage(r,_strMessage,false);
+        },
+        hasPlayerList:function(){
+          var p1=jQuery.trim(_strPlayer1);
+          var p2=jQuery.trim(_strPlayer2);
+          return (p1.length!=0&&p2.length!=0);
+        },
+        isPlayer:function(p){
+          var p1=jQuery.trim(_strPlayer1);
+          var p2=jQuery.trim(_strPlayer2);
+          return true;
+          //return (p1==p||p2==p);
+        },
+        setPlayerList:function(p1,p2,r){
+          if(p1.length)_strPlayer1=p1.toUpperCase();
+          if(p2.length)_strPlayer2=p2.toUpperCase();
+          if(_strPlayer1.length>_strPlayer2.length){
+            var i=_strPlayer1.length-_strPlayer2.length;
+            while(i>0){
+              i--;
+              _strPlayer2+=' ';
+            }
+          }
+          else if(_strPlayer2.length>_strPlayer1.length){
+            var i=_strPlayer2.length-_strPlayer1.length;
+            while(i>0){
+              i--;
+              _strPlayer1=' '+_strPlayer1;
+            }
+          }
+          SAPFont.updatePlayerList(r,_strPlayer1+' : '+_strPlayer2,false);
+        },
+        setScore:function(p1,p2,r){
+          p1=parseInt(p1);
+          p2=parseInt(p2);
+          SAPFont.updateScore(p1,p2,r);
+        },
+        updateScore:function(p1,p2,r){
+          var d='#000';
+          $('#divScore > div').css({backgroundPosition:'0 0'});
+          var bg=_bg(r);
+          var strMessage=p1+':'+p2;
+          for(var i=0;i<strMessage.length;i++){
+            var z=strMessage.charCodeAt(i);
+            if(z<32)z=32;if(z>96)z=96;
+            z-=32;
+            if($('#s'+i).length){
+              $('#s'+i).css({backgroundPosition:'0 -'+z*8*2*r+'px'});
+            }
+            else{
+              $('<div></div>').attr('id','s'+i).css({display:'inline-block',width:6*2*r+'px',height:8*2*r+'px',padding:0,margin:'1px',background:bg,backgroundPosition:'0 -'+z*8*2*r+'px'}).appendTo('#divScore');
+            }
+          }
+        },
+        updatePlayerList:function(r,strMessage){
+          var d='#000';
+          var strId='lp';
+          var parentId='#divPlayerList';
+          $(parentId+' > div').css({backgroundPosition:'0 0'});
+          var bg=_bg(r);
+          for(var i=0;i<strMessage.length;i++){
+            var z=strMessage.charCodeAt(i);
+            if(z<32)z=32;if(z>96)z=96;
+            z-=32;
+            if($('#'+strId+i).length){
+              $('#'+strId+i).css({backgroundPosition:'0 -'+z*8*2*r+'px'});
+            }
+            else{
+              $('<div></div>').attr('id',strId+i).css({display:'inline-block',width:6*2*r+'px',height:8*2*r+'px',padding:0,margin:'1px',background:bg,backgroundPosition:'0 -'+z*8*2*r+'px'}).appendTo(parentId);
+            }
+          }
+        },
+        updateMessage:function(r,strMessage){
+          var d='#000';
+          var strId='p';
+          var parentId='#divMessage';
+          $(parentId+' > div').css({backgroundPosition:'0 0'});
+          var bg=_bg(r);
+          for(var i=0;i<strMessage.length;i++){
+            var z=strMessage.charCodeAt(i);
+            if(z<32)z=32;if(z>96)z=96;
+            z-=32;
+            if($('#'+strId+i).length){
+              $('#'+strId+i).css({backgroundPosition:'0 -'+z*8*2*r+'px'});
+            }
+            else{
+              $('<div></div>').attr('id',strId+i).css({display:'inline-block',width:6*2*r+'px',height:8*2*r+'px',padding:0,margin:'1px',background:bg,backgroundPosition:'0 -'+z*8*2*r+'px'}).appendTo(parentId);
+            }
+          }
+        }
+      };
+    })();
+    jQuery(window).keydown(SAPGame.onKeyDown);
+    jQuery(window).keyup(SAPGame.onKeyUp);
+    jQuery(document).ready(function($){
+      SAPGame.init($('#game').get(0));
+      SAPFont.setMessage("SAP Ping Pong",2);
+      SAPFont.setScore(0,0,5);
+      SAPFont.setPlayerList('      ','      ',2);
+    });
+
+    var ws;
+    if("WebSocket" in window || "MozWebSocket" in window){
+      var sUrl = "wss://ldciqgs.wdf.sap.corp:44300/sap/bc/apc/sap/ping_pong"
+      if("WebSocket" in window){
+        ws = new WebSocket(sUrl); // chrome branch
+      }      
+      else{        
+        ws = new MozWebSocket(sUrl);
+      }      
+      ws.onopen = function(){};
+      ws.onmessage=function(evt)
+      {
+        var data = {};
+        var message = evt.data;//alert(message);
+        if(!message)
+          return;
+        message = message.toUpperCase().split(':');
+        var cmd = message[0];
+        var player = message[1];
+        if(cmd == 'PLAYER1.REGISTER' || cmd == 'PLAYER2.REGISTER'){
+           if(cmd=='PLAYER1.REGISTER'){
+             SAPFont.setPlayerList(player,'',2);
+           }
+           else{
+             SAPFont.setPlayerList('',player,2);
+           }
+        }
+        else if(cmd=='PLAYER1.START'||cmd=='PLAYER2.START'){
+           if(!SAPFont.hasPlayerList())return;
+           if(!SAPFont.isPlayer(player))return;
+           SAPGame.onStart();
+           SAPFont.setMessage("let the game start!",2);
+        }
+        else{
+           //if(!SAPFont.hasPlayerList())return;
+           if(!SAPFont.isPlayer(player))return;
+        }
+        switch(cmd){
+            case 'PLAYER1.UP':
+              SAPGame.onPLAYER1(true);
+              break;
+            case 'PLAYER1.DOWN':
+              SAPGame.onPLAYER1(false);
+              break;
+           case 'PLAYER2.UP':
+             SAPGame.onPLAYER2(true);
+             break;
+           case 'PLAYER2.DOWN':
+             SAPGame.onPLAYER2(false);
+             break;
+         }
+      };
+      ws.onclose=function(){ alert( 'Closed' )};
+    }
+  </script>
+  <!-- end scripts-->
+</body>
+</html>

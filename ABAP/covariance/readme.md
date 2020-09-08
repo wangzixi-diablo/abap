@@ -1,0 +1,1 @@
+source code for my SCN blog [Covariance in Java and simulation in ABAP](https://blogs.sap.com/2017/04/15/covariance-in-java-and-simulation-in-abap/).

@@ -1,0 +1,77 @@
+<html>
+<head>
+<script type="text/javascript">
+
+var xmlhttp;
+function GetXmlHttpObject()
+{
+    if (window.XMLHttpRequest) {
+       return new XMLHttpRequest();
+    }
+    if (window.ActiveXObject) {
+       return new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    return null;
+}
+function stateChanged() {
+   if (xmlhttp.readyState == 4) {
+       document.getElementById("result").innerHTML = xmlhttp.responseText;
+       document.getElementById("result").style.border = "1px solid #A5ACB2";
+  }
+}
+function getRequestURL(str) {
+    var url = "https://ldai1ag3.wdf.sap.corp:44355/sap/crm/file_upload?id=5700000528";
+    url = url + "&sid=" + Math.random();
+    return url;
+}
+function submitRequest(request) {
+  var sBoundary = "---------------------------" + Date.now().toString(16);
+  xmlhttp.setRequestHeader("Content-Type", "multipart\/form-data; boundary=" + sBoundary);
+  var sendStream = "--" + sBoundary + "\r\n" + request.join("--" + sBoundary + "\r\n") + "--" + sBoundary + "--\r\n";
+  xmlhttp.send(sendStream);
+}
+function pushSegment(oFREvt){
+    this.owner.data[this.segmentIdx] += ( "Content-Length: " + oFREvt.loaded 
+      + "\r\n" + oFREvt.target.result + "\r\n" );
+    this.owner.status--;
+    debugger;
+    if( this.owner.status == 0)
+      submitRequest(this.owner.data);
+}
+function showResult(str) {
+  if (str.length == 0 ) {
+      document.getElementById("result").innerHTML = "";
+      document.getElementById("result").style.border = "0px";
+      return;
+  }
+  xmlhttp = GetXmlHttpObject();
+  if (xmlhttp == null ){
+      alert ("Your browser does not support XML HTTP Request");
+      return;
+  }
+  var requesturl = getRequestURL(str);
+  xmlhttp.onreadystatechange = stateChanged ;
+
+  xmlhttp.open("POST",requesturl,true);
+  xmlhttp.setRequestHeader("Content-Type", "multipart\/form-data");
+  this.data = []; 
+  var oField = document.getElementById("file_upload");
+  for (nFile = 0; nFile < oField.files.length; nFile++) {
+      oFile = oField.files[nFile];
+      oSegmReq = new FileReader();
+      oSegmReq.owner = this;
+      oSegmReq.onload = pushSegment;
+      oSegmReq.segmentIdx = this.data.length;
+      this.status++;
+      data.push("Content-Disposition: form-data; name=\"" + oField.name + "\"; filename=\""+ oFile.name + "\"\r\nContent-Type: " + oFile.type + "\r\n\r\n");
+      oSegmReq.readAsBinaryString(oFile); 
+  }
+}
+</script>
+</head>
+<body>
+<input type="text" id = "fname" onkeyup="showResult(this.value)" />
+<input type="file" id = "file_upload" multiple name="photos[]">
+<div id = "result" ></div>
+</body>
+</html>

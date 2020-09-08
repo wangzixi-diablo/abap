@@ -1,0 +1,118 @@
+{
+  "welcomeFile": "/webapp/test/flpSandbox.html",
+  "routes": [
+    {
+      "path": "/sap/opu/odata",
+      "target": {
+        "type": "destination",
+        "name": "GM6CLNT001",
+        "entryPath": "/sap/opu/odata"
+      },
+      "description": "GM6 Client 001"
+    },
+    {
+      "path": "/sap/bc/lrep",
+      "target": {
+        "type": "destination",
+        "name": "GM6CLNT001",
+        "entryPath": "/sap/bc/lrep"
+      },
+      "description": "GM6CLNT001"
+    },
+    {
+      "path": "/resources",
+      "target": {
+        "type": "application",
+        "name": "sapui5preview",
+        "entryPath": "/resources"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "preferLocal": true,
+        "entryPath": "/resources",
+        "version": "snapshot"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/sap/ui5/1/resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "preferLocal": true,
+        "version": "snapshot"
+      },
+      "description": "SAPUI5 dist layer resources"
+    },
+    {
+      "path": "/",
+      "target": {
+        "type": "application",
+        "name": "flpsandbox",
+        "preferLocal": true
+      },
+      "description": "Subscribed Fiori LaunchPad"
+    },
+    {
+      "path": "/webapp/resources",
+      "target": {
+        "type": "application",
+        "name": "sapui5preview",
+        "entryPath": "/resources"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/webapp/resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/resources",
+        "version": "snapshot"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/webapp/test-resources",
+      "target": {
+        "type": "application",
+        "name": "sapui5preview",
+        "entryPath": "/test-resources"
+      },
+      "description": "SAPUI5 Test Resources"
+    },
+    {
+      "path": "/webapp/test-resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/test-resources"
+      },
+      "description": "SAPUI5 Test Resources"
+    },
+    {
+      "path": "/test-resources",
+      "target": {
+        "type": "application",
+        "name": "sapui5preview",
+        "entryPath": "/test-resources"
+      },
+      "description": "SAPUI5 Test Resources"
+    },
+    {
+      "path": "/test-resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/test-resources"
+      },
+      "description": "SAPUI5 Test Resources"
+    }
+  ],
+  "sendWelcomeFileRedirect": true
+}

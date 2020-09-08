@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0"
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZSERVICE_POC_SRV" xml:lang="en" sap:schema-version="1"
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="Z_C_Service_Order_ViewType" sap:label="service order consumption view" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="order_guid"/>
+                </Key>
+                <Property Name="order_guid" Type="Edm.Guid" Nullable="false" sap:label="Object GUID"/>
+                <Property Name="txt30" Type="Edm.String" MaxLength="30" sap:label="Status"/>
+                <Property Name="requested_start" Type="Edm.DateTimeOffset" Precision="0" sap:label="Time Stamp (UTC) of Start Time of Appointment"/>
+                <Property Name="requested_end" Type="Edm.DateTimeOffset" Precision="0" sap:label="Time Stamp (UTC) of Start Time of Appointment"/>
+                <Property Name="object_id" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Transaction ID"/>
+                <Property Name="description" Type="Edm.String" MaxLength="40" sap:label="Transaction Descr."/>
+                <Property Name="partner_no" Type="Edm.String" MaxLength="32" sap:label="Partner Number"/>
+                <Property Name="title" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase"/>
+                <Property Name="posting_date" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Posting Date"/>
+                <Property Name="name" Type="Edm.String" MaxLength="80" sap:label="Full Name"/>
+                <Property Name="stat" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Status" sap:value-list="standard"/>
+                <Property Name="txt04" Type="Edm.String" MaxLength="4" sap:text="to_statusfixedvalue/status_text" sap:label="Status" sap:creatable="false" sap:updatable="false" sap:value-list="fixed-values"/>
+                <NavigationProperty Name="to_Item" Relationship="ZSERVICE_POC_SRV.assoc_4DAC0DB87BC1BB8B16177FA95F05CD4A" FromRole="FromRole_assoc_4DAC0DB87BC1BB8B16177FA95F05CD4A" ToRole="ToRole_assoc_4DAC0DB87BC1BB8B16177FA95F05CD4A"/>
+                <NavigationProperty Name="to_statusfixedvalue" Relationship="ZSERVICE_POC_SRV.assoc_A4370CD0ED66FEBB8904308CDAECC1C2" FromRole="FromRole_assoc_A4370CD0ED66FEBB8904308CDAECC1C2" ToRole="ToRole_assoc_A4370CD0ED66FEBB8904308CDAECC1C2"/>
+                <NavigationProperty Name="to_statushelp" Relationship="ZSERVICE_POC_SRV.assoc_5E8EB98D47146D0EDA07CFA96AE73691" FromRole="FromRole_assoc_5E8EB98D47146D0EDA07CFA96AE73691" ToRole="ToRole_assoc_5E8EB98D47146D0EDA07CFA96AE73691"/>
+            </EntityType>
+            <EntityType Name="Z_I_Item_DetailType" sap:label="item detail" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="guid"/>
+                    <PropertyRef Name="header"/>
+                </Key>
+                <Property Name="guid" Type="Edm.Guid" Nullable="false" sap:label="Object GUID"/>
+                <Property Name="header" Type="Edm.Guid" Nullable="false" sap:label="Object GUID"/>
+                <Property Name="number_int" Type="Edm.String" MaxLength="10" sap:display-format="NonNegative" sap:label="Item Number"/>
+                <Property Name="description" Type="Edm.String" MaxLength="40" sap:label="Product Description"/>
+                <Property Name="quantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Quantity"/>
+                <Property Name="unit" Type="Edm.String" MaxLength="3" sap:label="Sales Unit" sap:semantics="unit-of-measure"/>
+                <Property Name="stat" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Status"/>
+                <Property Name="txt04" Type="Edm.String" MaxLength="4" sap:label="Status"/>
+                <Property Name="txt30" Type="Edm.String" MaxLength="30" sap:label="Status"/>
+            </EntityType>
+            <EntityType Name="Z_C_Status_FixedvalueType" sap:label="fixed value" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="status_code"/>
+                </Key>
+                <Property Name="status_code" Type="Edm.String" Nullable="false" MaxLength="4" sap:text="status_text" sap:label="status key for fixed value" sap:value-list="fixed-values"/>
+                <Property Name="status_text" Type="Edm.String" MaxLength="30" sap:label="status description for fixed value"/>
+            </EntityType>
+            <EntityType Name="Z_C_Status_ValuehelpType" sap:label="value help for status -Jerry" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="status_key"/>
+                </Key>
+                <Property Name="status_key" Type="Edm.String" Nullable="false" MaxLength="5" sap:display-format="UpperCase" sap:label="status key for help"/>
+                <Property Name="status_text" Type="Edm.String" MaxLength="30" sap:label="status description for help"/>
+            </EntityType>
+            <Association Name="assoc_4DAC0DB87BC1BB8B16177FA95F05CD4A" sap:content-version="1">
+                <End Type="ZSERVICE_POC_SRV.Z_C_Service_Order_ViewType" Multiplicity="1" Role="FromRole_assoc_4DAC0DB87BC1BB8B16177FA95F05CD4A"/>
+                <End Type="ZSERVICE_POC_SRV.Z_I_Item_DetailType" Multiplicity="*" Role="ToRole_assoc_4DAC0DB87BC1BB8B16177FA95F05CD4A"/>
+            </Association>
+            <Association Name="assoc_A4370CD0ED66FEBB8904308CDAECC1C2" sap:content-version="1">
+                <End Type="ZSERVICE_POC_SRV.Z_C_Service_Order_ViewType" Multiplicity="1" Role="FromRole_assoc_A4370CD0ED66FEBB8904308CDAECC1C2"/>
+                <End Type="ZSERVICE_POC_SRV.Z_C_Status_FixedvalueType" Multiplicity="0..1" Role="ToRole_assoc_A4370CD0ED66FEBB8904308CDAECC1C2"/>
+            </Association>
+            <Association Name="assoc_5E8EB98D47146D0EDA07CFA96AE73691" sap:content-version="1">
+                <End Type="ZSERVICE_POC_SRV.Z_C_Service_Order_ViewType" Multiplicity="1" Role="FromRole_assoc_5E8EB98D47146D0EDA07CFA96AE73691"/>
+                <End Type="ZSERVICE_POC_SRV.Z_C_Status_ValuehelpType" Multiplicity="0..1" Role="ToRole_assoc_5E8EB98D47146D0EDA07CFA96AE73691"/>
+            </Association>
+            <EntityContainer Name="ZSERVICE_POC_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="Z_I_Item_Detail" EntityType="ZSERVICE_POC_SRV.Z_I_Item_DetailType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Z_C_Status_Fixedvalue" EntityType="ZSERVICE_POC_SRV.Z_C_Status_FixedvalueType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Z_C_Status_Valuehelp" EntityType="ZSERVICE_POC_SRV.Z_C_Status_ValuehelpType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="Z_C_Service_Order_View" EntityType="ZSERVICE_POC_SRV.Z_C_Service_Order_ViewType" sap:searchable="true" sap:content-version="1" sap:semantics="fixed-values"/>
+                <AssociationSet Name="assoc_4DAC0DB87BC1BB8B16177FA95F05CD4A" Association="ZSERVICE_POC_SRV.assoc_4DAC0DB87BC1BB8B16177FA95F05CD4A" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Z_C_Service_Order_View" Role="FromRole_assoc_4DAC0DB87BC1BB8B16177FA95F05CD4A"/>
+                    <End EntitySet="Z_I_Item_Detail" Role="ToRole_assoc_4DAC0DB87BC1BB8B16177FA95F05CD4A"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_A4370CD0ED66FEBB8904308CDAECC1C2" Association="ZSERVICE_POC_SRV.assoc_A4370CD0ED66FEBB8904308CDAECC1C2" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Z_C_Service_Order_View" Role="FromRole_assoc_A4370CD0ED66FEBB8904308CDAECC1C2"/>
+                    <End EntitySet="Z_C_Status_Fixedvalue" Role="ToRole_assoc_A4370CD0ED66FEBB8904308CDAECC1C2"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_5E8EB98D47146D0EDA07CFA96AE73691" Association="ZSERVICE_POC_SRV.assoc_5E8EB98D47146D0EDA07CFA96AE73691" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Z_C_Service_Order_View" Role="FromRole_assoc_5E8EB98D47146D0EDA07CFA96AE73691"/>
+                    <End EntitySet="Z_C_Status_Valuehelp" Role="ToRole_assoc_5E8EB98D47146D0EDA07CFA96AE73691"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotations Target="ZSERVICE_POC_SRV.Z_C_Service_Order_ViewType/stat"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="value help for status -Jerry"/>
+                        <PropertyValue Property="CollectionPath" String="Z_C_Status_Valuehelp"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="stat"/>
+                                    <PropertyValue Property="ValueListProperty" String="status_key"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="status_text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZSERVICE_POC_SRV.Z_C_Service_Order_ViewType/txt04"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="fixed value"/>
+                        <PropertyValue Property="CollectionPath" String="Z_C_Status_Fixedvalue"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="txt04"/>
+                                    <PropertyValue Property="ValueListProperty" String="status_code"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="status_text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="./sap/ZSERVICE_POC_SRV/$metadata"
+                xmlns:atom="http://www.w3.org/2005/Atom"/>
+                <atom:link rel="latest-version" href="./sap/ZSERVICE_POC_SRV/$metadata"
+                    xmlns:atom="http://www.w3.org/2005/Atom"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>

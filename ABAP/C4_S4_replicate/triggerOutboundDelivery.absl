@@ -1,0 +1,40 @@
+/*
+	Add your SAP Business ByDesign scripting language implementation for:
+		Business Object: CustomerQuote
+		Node: Root
+		Action: triggerOutboundDeliveru 
+		
+	Note: 
+	  - To access the elements of the business object node, 
+	    use path expressions, for example, this.<element name>. 
+	  - To use code completion, press CTRL+J. 
+	   
+*/
+
+import ABSL;
+
+if( this.OutboundDeliveryID.IsInitial() == false){
+    raise already_delivered.Create("E");
+	return;
+}
+
+var HttpMethod = "GET";
+var HttpResource = "";                            // not required
+var ContentType = "";                             // not required
+var Body = "";                                    // not required
+var HeaderParameter : collectionof NameAndValue;  // not required
+
+var URLParameter    : collectionof NameAndValue;
+
+var URLParameterEntry : NameAndValue;
+
+URLParameterEntry.Name  = "SoID";
+URLParameterEntry.Value = this.ID.content;
+
+URLParameter.Add(URLParameterEntry);
+
+var response = WebServiceUtilities.ExecuteRESTService("JerryExternalService", "JerryExternal", HttpMethod, HttpResource,
+URLParameter, HeaderParameter,ContentType, Body);
+
+this.OutboundDeliveryID = response.Content;
+raise delivery_message.Create("S", this.OutboundDeliveryID);

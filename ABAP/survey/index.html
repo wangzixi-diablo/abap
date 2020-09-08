@@ -1,0 +1,125 @@
+  <% data: lo_tool type ref to zcl_crm_survey_tool,
+           lv_json type string.
+     lo_tool = new #( ).
+
+     lv_json = lo_tool->get_survey_answer( ).
+   %>
+
+<html>
+<style>
+
+#myChart1, #myChart2,#myChart3,#myChart4,#myChart5,#myChart6,
+#barChart1, #barChart2,#barChart3,#barChart4,#barChart5,#barChart6
+ {
+  display: inline !important;
+}
+
+</style>
+<body id="body" onload="loaded()">
+<div>
+<canvas id="myChart1" height="400px"></canvas>
+<canvas id="myChart2" height="400px"></canvas>
+<canvas id="myChart3" height="400px"></canvas>
+<canvas id="myChart4" height="400px"></canvas>
+<canvas id="myChart5" height="400px"></canvas>
+<canvas id="myChart6" height="400px"></canvas>
+</div>
+
+<div>
+<canvas id="barChart1" height="400px"></canvas>
+<canvas id="barChart2" height="400px"></canvas>
+<canvas id="barChart3" height="400px"></canvas>
+<canvas id="barChart4" height="400px"></canvas>
+<canvas id="barChart5" height="400px"></canvas>
+<canvas id="barChart6" height="400px"></canvas>
+</div>
+
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+
+<script>
+
+function getBodyNode(){
+  return document.getElementById("body");
+}
+
+function loaded(){
+
+  var json   = `<%=lv_json%>`;
+  var aResult = JSON.parse(json).RESULT;
+
+  var totalWidth = getBodyNode().clientWidth;
+  console.log("width in load: " + totalWidth);
+
+  var aCharts = document.getElementsByTagName("canvas");
+  for( var i = 0; i < aCharts.length; i++){
+    aCharts[i].width = totalWidth / 6.5;
+  }
+
+  /*
+  var option = {
+    type: "pie",
+    xAxisData: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+    yAxisData: [12, 19, 3, 5, 2, 3],
+    yAxisLabel: "Number of Votes"
+  };*/
+
+  for( var i = 1; i <= 6; i++ ){
+    var oData = aResult[i-1];
+    var option = {
+      type: "pie",
+      xAxisData: oData.ANSWER_TEXT,
+      yAxisData: oData.ANSWER_VALUE
+    };
+    createChartOnCanvas("myChart" + i, option);
+  }
+
+  for( var i = 1; i <= 6; i++ ){
+    oData = aResult[i-1];
+     option = {
+      type: "bar",
+      xAxisData: oData.ANSWER_TEXT,
+      yAxisData: oData.ANSWER_VALUE,
+      yAxisLabel: oData.QUESTION_TEXT
+    };
+    createChartOnCanvas("barChart" + i, option);
+  }
+}
+
+function createChartOnCanvas(canvasId, oChartOption){
+
+  var ctx = document.getElementById(canvasId).getContext('2d');
+  var myChart = new Chart(ctx, {
+      type: oChartOption.type,
+      data: {
+          labels: oChartOption.xAxisData,
+          datasets: [{
+              label: oChartOption.yAxisLabel,
+              data: oChartOption.yAxisData,
+              backgroundColor: [
+                  'rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)',
+                  'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)'
+              ],
+              borderColor: [
+                  'rgba(255,99,132,1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)',
+                  'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)'
+              ],
+              borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: false,
+            scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero:true
+                  }
+              }]
+          }
+      }
+  });
+}
+</script>
+
+</html>

@@ -1,0 +1,24 @@
+<html>
+<script type="text/javascript">
+	
+function compare(a,b){
+	var diff = a ^ b;
+	if( diff == 0)
+		return 0;
+	diff = diff | ( diff >> 1 );
+	diff |= diff >> 2;
+	diff |= diff >> 4;
+	diff |= diff >> 8;
+	diff |= diff >> 16;
+	diff ^= diff >> 1;
+	return  ( a & diff )? 1:-1;
+}
+
+console.log(compare(1,2));
+console.log(compare(3,2));
+console.log(compare(300,2));
+console.log(compare(3000,2));
+console.log(compare(3000,3000));
+console.log(compare(3000,3001));
+</script>
+</html>

@@ -1,0 +1,38 @@
+{
+  "projectType": [
+    "sap.watt.saptoolsets.fiori.project.ui5template.smartProject",
+    "sap.watt.uitools.ide.fiori",
+    "sap.watt.saptoolsets.fiori.project.uiadaptation"
+  ],
+  "generation": [
+    {
+      "templateId": "ui5template.smarttemplate",
+      "templateVersion": "1.0.0",
+      "dateTimeStamp": "Thu, 21 Apr 2016 08:19:18 GMT"
+    },
+    {
+      "templateId": "uiadaptation.uiadaptationpanehtml",
+      "templateVersion": "0.0.0",
+      "dateTimeStamp": "Mon, 25 Apr 2016 07:48:15 GMT"
+    }
+  ],
+  "mockpreview": {
+    "mockUri": "/sap/opu/odata/sap/ZSERVICE_POC_SRV",
+    "metadataFilePath": "",
+    "loadJSONFiles": false,
+    "loadCustomRequests": false,
+    "mockRequestsFilePath": ""
+  },
+  "translation": {
+    "translationDomain": "",
+    "supportedLanguages": "en,fr,de",
+    "defaultLanguage": "en",
+    "defaultI18NPropertyFile": "i18n.properties",
+    "resourceModelName": "i18n"
+  },
+  "hcpdeploy": {
+    "account": "fiori",
+    "name": "service_poc",
+    "entryPath": "webapp"
+  }
+}
